@@ -23,5 +23,5 @@ struct UserSupbase: Identifiable, Codable {
 }
 
 extension UserSupbase {
-    static var Mock_User_Firebase = UserFirebase(id:NSUUID().uuidString,fullname: "Shamnan Oana", email: "test1828699@gmail.com")
+    static var Mock_User_Firebase = UserSupbase(id:NSUUID().uuidString,fullname: "Shamnan Oana", email: "test1828699@gmail.com")
 }

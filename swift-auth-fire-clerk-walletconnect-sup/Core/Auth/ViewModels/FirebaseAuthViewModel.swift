@@ -7,6 +7,7 @@
 
 import Foundation
 import FirebaseAuth
+import FirebaseFirestore
 
 class AuthFirebaseViewModel: ObservableObject {
     @Published var userSession: FirebaseAuth.User?
@@ -32,8 +33,10 @@ class AuthFirebaseViewModel: ObservableObject {
             self.userSession = result.user
             let fullname = "\(firstname) \(lastname)"
             let user = UserFirebase(id:result.user.uid,fullname:fullname,username:username,email:email)
+            let encodedUser = try Firestore.Encoder().encode(user)
+            try await Firestore.firestore().collection("users").document(user.id).setData(encodedUser)
         } catch {
-            
+            print("firebase create new user: \(error.localizedDescription)")
         }
     }
     
