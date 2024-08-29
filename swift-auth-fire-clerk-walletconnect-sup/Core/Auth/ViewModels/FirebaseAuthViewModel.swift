@@ -27,7 +27,14 @@ class AuthFirebaseViewModel: ObservableObject {
         firstname: String,
         lastname: String
     ) async throws {
-        print("create new")
+        do {
+            let result = try await Auth.auth().createUser(withEmail: email, password: password)
+            self.userSession = result.user
+            let fullname = "\(firstname) \(lastname)"
+            let user = UserFirebase(id:result.user.uid,fullname:fullname,username:username,email:email)
+        } catch {
+            
+        }
     }
     
     func singOut() {

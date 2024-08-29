@@ -10,6 +10,7 @@ import Foundation
 struct UserFirebase: Identifiable, Codable {
     let id: String
     let fullname: String
+    let username: String
     let email: String
     
     var initials: String {
@@ -23,5 +24,5 @@ struct UserFirebase: Identifiable, Codable {
 }
 
 extension UserFirebase {
-    static var Mock_User_Firebase = UserFirebase(id:NSUUID().uuidString,fullname: "Shamnan Oana", email: "test1828699@gmail.com")
+    static var Mock_User_Firebase = UserFirebase(id:NSUUID().uuidString,fullname: "Shamnan Oana", username: "jason12",email: "test1828699@gmail.com")
 }
