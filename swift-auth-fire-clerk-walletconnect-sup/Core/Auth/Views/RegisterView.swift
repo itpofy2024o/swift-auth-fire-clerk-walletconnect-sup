@@ -16,6 +16,7 @@ struct RegisterView: View {
     @State private var password = ""
     @State private var confirmation = ""
     @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var viewModel: AuthFirebaseViewModel
     
     var body: some View {
         VStack {
@@ -39,6 +40,11 @@ struct RegisterView: View {
             .padding(.top,UIScreen.main.bounds.width*0.05)
             
             Button {
+                Task {
+                    try await viewModel.createNewUser(
+                        withEmail:newEmail,password:password,
+                        username:username,firstname:firstName,lastname:lastName)
+                }
                 print("hey bye")
             } label: {
                 HStack {

@@ -12,6 +12,7 @@ struct AuthView: View {
     @State private var email = ""
     @State private var passwd = ""
     let method: String
+    @EnvironmentObject var viewModel: AuthFirebaseViewModel
     
     var body: some View {
         NavigationStack {
@@ -33,7 +34,10 @@ struct AuthView: View {
                 
                 Button {
                     Task {
+                        try await viewModel.signIn(
+                            withEmail:email, password:passwd)
                     }
+                    print("signing in")
                 } label: {
                     HStack {
                         Text("SIGN IN").fontWeight(.semibold)
