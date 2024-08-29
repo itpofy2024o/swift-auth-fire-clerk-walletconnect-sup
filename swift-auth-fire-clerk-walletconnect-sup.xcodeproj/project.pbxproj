@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		9EB20CEB2C7F9478003D5333 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9EB20CEA2C7F9478003D5333 /* GoogleService-Info.plist */; };
+		9EB20CED2C80490C003D5333 /* SupbaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB20CEC2C80490B003D5333 /* SupbaseViewModel.swift */; };
+		9EB20CEF2C804922003D5333 /* ClerkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB20CEE2C804922003D5333 /* ClerkViewModel.swift */; };
+		9EB20CF12C80493A003D5333 /* WalletConnectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB20CF02C80493A003D5333 /* WalletConnectViewModel.swift */; };
 		9ED4ED4E2C7F6C890004C5CC /* swift_auth_fire_clerk_walletconnect_supApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED4ED4D2C7F6C890004C5CC /* swift_auth_fire_clerk_walletconnect_supApp.swift */; };
 		9ED4ED502C7F6C890004C5CC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED4ED4F2C7F6C890004C5CC /* ContentView.swift */; };
 		9ED4ED522C7F6C8D0004C5CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9ED4ED512C7F6C8D0004C5CC /* Assets.xcassets */; };
@@ -56,6 +59,9 @@
 
 /* Begin PBXFileReference section */
 		9EB20CEA2C7F9478003D5333 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		9EB20CEC2C80490B003D5333 /* SupbaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupbaseViewModel.swift; sourceTree = "<group>"; };
+		9EB20CEE2C804922003D5333 /* ClerkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClerkViewModel.swift; sourceTree = "<group>"; };
+		9EB20CF02C80493A003D5333 /* WalletConnectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletConnectViewModel.swift; sourceTree = "<group>"; };
 		9ED4ED4A2C7F6C890004C5CC /* swift-auth-fire-clerk-walletconnect-sup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "swift-auth-fire-clerk-walletconnect-sup.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9ED4ED4D2C7F6C890004C5CC /* swift_auth_fire_clerk_walletconnect_supApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swift_auth_fire_clerk_walletconnect_supApp.swift; sourceTree = "<group>"; };
 		9ED4ED4F2C7F6C890004C5CC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -291,6 +297,9 @@
 			isa = PBXGroup;
 			children = (
 				9ED4EDA92C7F729B0004C5CC /* FirebaseAuthViewModel.swift */,
+				9EB20CEC2C80490B003D5333 /* SupbaseViewModel.swift */,
+				9EB20CEE2C804922003D5333 /* ClerkViewModel.swift */,
+				9EB20CF02C80493A003D5333 /* WalletConnectViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -449,13 +458,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				9ED4EDAC2C7F72C70004C5CC /* AuthView.swift in Sources */,
+				9EB20CEF2C804922003D5333 /* ClerkViewModel.swift in Sources */,
 				9ED4EDAA2C7F729B0004C5CC /* FirebaseAuthViewModel.swift in Sources */,
 				9ED4ED502C7F6C890004C5CC /* ContentView.swift in Sources */,
 				9ED4EDB02C7F72EF0004C5CC /* AuthenticationInputView.swift in Sources */,
 				9ED4ED932C7F6F920004C5CC /* MainView.swift in Sources */,
+				9EB20CF12C80493A003D5333 /* WalletConnectViewModel.swift in Sources */,
 				9ED4EDA62C7F723A0004C5CC /* SplashAuthedView.swift in Sources */,
 				9ED4EDA02C7F71440004C5CC /* SplashBaseBackgroundView.swift in Sources */,
 				9ED4EDAE2C7F72D50004C5CC /* RegisterView.swift in Sources */,
+				9EB20CED2C80490C003D5333 /* SupbaseViewModel.swift in Sources */,
 				9ED4ED4E2C7F6C890004C5CC /* swift_auth_fire_clerk_walletconnect_supApp.swift in Sources */,
 				9ED4ED9A2C7F6FD30004C5CC /* PreferenceRowView.swift in Sources */,
 				9ED4ED962C7F6FB30004C5CC /* InfoCardView.swift in Sources */,
