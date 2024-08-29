@@ -17,7 +17,7 @@ class AuthFirebaseViewModel: ObservableObject {
     }
     
     func signIn(withEmail email:String, password: String) async throws {
-        
+        print("log in")
     }
     
     func createNewUser(
@@ -27,7 +27,7 @@ class AuthFirebaseViewModel: ObservableObject {
         firstname: String,
         lastname: String
     ) async throws {
-        
+        print("create new")
     }
     
     func singOut() {

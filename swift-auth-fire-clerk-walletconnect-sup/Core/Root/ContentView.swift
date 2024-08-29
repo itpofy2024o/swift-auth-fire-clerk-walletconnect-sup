@@ -8,11 +8,18 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var viewModel: AuthFirebaseViewModel
     var body: some View {
-        SplashNullUserView()
+        Group {
+            if viewModel.userSession != nil {
+                SplashAuthedView()
+            } else {
+                SplashNullUserView()
+            }
+        }
     }
 }
 
 #Preview {
-    ContentView()
+    ContentView().environmentObject(AuthFirebaseViewModel())
 }

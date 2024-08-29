@@ -9,10 +9,10 @@ import SwiftUI
 
 @main
 struct swift_auth_fire_clerk_walletconnect_supApp: App {
-    @StateObject var fireAuthModel = AuthFirebaseViewModel()
+    @StateObject var viewModel = AuthFirebaseViewModel()
     var body: some Scene {
         WindowGroup {
-            ContentView().environmentObject(fireAuthModel)
+            ContentView().environmentObject(viewModel)
         }
     }
 }
