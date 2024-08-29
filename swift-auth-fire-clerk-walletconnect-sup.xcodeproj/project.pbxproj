@@ -14,7 +14,6 @@
 		9EB20CF42C80B6ED003D5333 /* Auth in Frameworks */ = {isa = PBXBuildFile; productRef = 9EB20CF32C80B6ED003D5333 /* Auth */; };
 		9EB20CF62C80B6ED003D5333 /* Storage in Frameworks */ = {isa = PBXBuildFile; productRef = 9EB20CF52C80B6ED003D5333 /* Storage */; };
 		9EB20CF82C80B6ED003D5333 /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = 9EB20CF72C80B6ED003D5333 /* Supabase */; };
-		9EB20CFA2C80BD3A003D5333 /* AuthViewModelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB20CF92C80BD3A003D5333 /* AuthViewModelManager.swift */; };
 		9ED4ED4E2C7F6C890004C5CC /* swift_auth_fire_clerk_walletconnect_supApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED4ED4D2C7F6C890004C5CC /* swift_auth_fire_clerk_walletconnect_supApp.swift */; };
 		9ED4ED502C7F6C890004C5CC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED4ED4F2C7F6C890004C5CC /* ContentView.swift */; };
 		9ED4ED522C7F6C8D0004C5CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9ED4ED512C7F6C8D0004C5CC /* Assets.xcassets */; };
@@ -66,7 +65,6 @@
 		9EB20CEC2C80490B003D5333 /* SupbaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupbaseViewModel.swift; sourceTree = "<group>"; };
 		9EB20CEE2C804922003D5333 /* ClerkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClerkViewModel.swift; sourceTree = "<group>"; };
 		9EB20CF02C80493A003D5333 /* WalletConnectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletConnectViewModel.swift; sourceTree = "<group>"; };
-		9EB20CF92C80BD3A003D5333 /* AuthViewModelManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModelManager.swift; sourceTree = "<group>"; };
 		9ED4ED4A2C7F6C890004C5CC /* swift-auth-fire-clerk-walletconnect-sup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "swift-auth-fire-clerk-walletconnect-sup.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9ED4ED4D2C7F6C890004C5CC /* swift_auth_fire_clerk_walletconnect_supApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swift_auth_fire_clerk_walletconnect_supApp.swift; sourceTree = "<group>"; };
 		9ED4ED4F2C7F6C890004C5CC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -308,7 +306,6 @@
 				9EB20CEC2C80490B003D5333 /* SupbaseViewModel.swift */,
 				9EB20CEE2C804922003D5333 /* ClerkViewModel.swift */,
 				9EB20CF02C80493A003D5333 /* WalletConnectViewModel.swift */,
-				9EB20CF92C80BD3A003D5333 /* AuthViewModelManager.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -473,7 +470,6 @@
 				9ED4EDAC2C7F72C70004C5CC /* AuthView.swift in Sources */,
 				9EB20CEF2C804922003D5333 /* ClerkViewModel.swift in Sources */,
 				9ED4EDAA2C7F729B0004C5CC /* FirebaseAuthViewModel.swift in Sources */,
-				9EB20CFA2C80BD3A003D5333 /* AuthViewModelManager.swift in Sources */,
 				9ED4ED502C7F6C890004C5CC /* ContentView.swift in Sources */,
 				9ED4EDB02C7F72EF0004C5CC /* AuthenticationInputView.swift in Sources */,
 				9ED4ED932C7F6F920004C5CC /* MainView.swift in Sources */,
