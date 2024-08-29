@@ -1,5 +1,5 @@
 {
-  "originHash" : "1984e2205c433d0a99e0400e68949e795c1df9cb99381558a2336424cc96aacb",
+  "originHash" : "3eb4d5f380e9808761f21c0daec153e289f568af20998dab13a1cb24b5c8a219",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -173,12 +173,39 @@
       }
     },
     {
+      "identity" : "supabase-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/supabase-community/supabase-swift.git",
+      "state" : {
+        "revision" : "4c966eafaaebc893a418e6334ef67beb0287a9ad",
+        "version" : "2.16.1"
+      }
+    },
+    {
       "identity" : "swift-algorithms",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-algorithms",
       "state" : {
         "revision" : "f6919dfc309e7f1b56224378b11e28bab5bccc42",
         "version" : "1.2.0"
+      }
+    },
+    {
+      "identity" : "swift-concurrency-extras",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/pointfreeco/swift-concurrency-extras",
+      "state" : {
+        "revision" : "bb5059bde9022d69ac516803f4f227d8ac967f71",
+        "version" : "1.1.0"
+      }
+    },
+    {
+      "identity" : "swift-crypto",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-crypto.git",
+      "state" : {
+        "revision" : "a53a7e8f858902659d4784322bede34f4e49097e",
+        "version" : "3.6.1"
       }
     },
     {
@@ -197,6 +224,15 @@
       "state" : {
         "revision" : "564597ad2fe2513a94dd8f3ba27ea2ff4be3cb37",
         "version" : "1.28.0"
+      }
+    },
+    {
+      "identity" : "xctest-dynamic-overlay",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/pointfreeco/xctest-dynamic-overlay",
+      "state" : {
+        "revision" : "96beb108a57f24c8476ae1f309239270772b2940",
+        "version" : "1.2.5"
       }
     }
   ],

@@ -11,6 +11,10 @@
 		9EB20CED2C80490C003D5333 /* SupbaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB20CEC2C80490B003D5333 /* SupbaseViewModel.swift */; };
 		9EB20CEF2C804922003D5333 /* ClerkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB20CEE2C804922003D5333 /* ClerkViewModel.swift */; };
 		9EB20CF12C80493A003D5333 /* WalletConnectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB20CF02C80493A003D5333 /* WalletConnectViewModel.swift */; };
+		9EB20CF42C80B6ED003D5333 /* Auth in Frameworks */ = {isa = PBXBuildFile; productRef = 9EB20CF32C80B6ED003D5333 /* Auth */; };
+		9EB20CF62C80B6ED003D5333 /* Storage in Frameworks */ = {isa = PBXBuildFile; productRef = 9EB20CF52C80B6ED003D5333 /* Storage */; };
+		9EB20CF82C80B6ED003D5333 /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = 9EB20CF72C80B6ED003D5333 /* Supabase */; };
+		9EB20CFA2C80BD3A003D5333 /* AuthViewModelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB20CF92C80BD3A003D5333 /* AuthViewModelManager.swift */; };
 		9ED4ED4E2C7F6C890004C5CC /* swift_auth_fire_clerk_walletconnect_supApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED4ED4D2C7F6C890004C5CC /* swift_auth_fire_clerk_walletconnect_supApp.swift */; };
 		9ED4ED502C7F6C890004C5CC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED4ED4F2C7F6C890004C5CC /* ContentView.swift */; };
 		9ED4ED522C7F6C8D0004C5CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9ED4ED512C7F6C8D0004C5CC /* Assets.xcassets */; };
@@ -62,6 +66,7 @@
 		9EB20CEC2C80490B003D5333 /* SupbaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupbaseViewModel.swift; sourceTree = "<group>"; };
 		9EB20CEE2C804922003D5333 /* ClerkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClerkViewModel.swift; sourceTree = "<group>"; };
 		9EB20CF02C80493A003D5333 /* WalletConnectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletConnectViewModel.swift; sourceTree = "<group>"; };
+		9EB20CF92C80BD3A003D5333 /* AuthViewModelManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModelManager.swift; sourceTree = "<group>"; };
 		9ED4ED4A2C7F6C890004C5CC /* swift-auth-fire-clerk-walletconnect-sup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "swift-auth-fire-clerk-walletconnect-sup.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9ED4ED4D2C7F6C890004C5CC /* swift_auth_fire_clerk_walletconnect_supApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swift_auth_fire_clerk_walletconnect_supApp.swift; sourceTree = "<group>"; };
 		9ED4ED4F2C7F6C890004C5CC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -96,6 +101,9 @@
 			files = (
 				9ED4ED7E2C7F6D8E0004C5CC /* Kingfisher in Frameworks */,
 				9ED4ED862C7F6E0C0004C5CC /* FirebaseFirestore in Frameworks */,
+				9EB20CF62C80B6ED003D5333 /* Storage in Frameworks */,
+				9EB20CF42C80B6ED003D5333 /* Auth in Frameworks */,
+				9EB20CF82C80B6ED003D5333 /* Supabase in Frameworks */,
 				9ED4ED842C7F6E0C0004C5CC /* FirebaseAuth in Frameworks */,
 				9ED4ED882C7F6E0C0004C5CC /* FirebaseStorage in Frameworks */,
 				9ED4ED812C7F6DB10004C5CC /* ClerkSDK in Frameworks */,
@@ -300,6 +308,7 @@
 				9EB20CEC2C80490B003D5333 /* SupbaseViewModel.swift */,
 				9EB20CEE2C804922003D5333 /* ClerkViewModel.swift */,
 				9EB20CF02C80493A003D5333 /* WalletConnectViewModel.swift */,
+				9EB20CF92C80BD3A003D5333 /* AuthViewModelManager.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -336,6 +345,9 @@
 				9ED4ED832C7F6E0C0004C5CC /* FirebaseAuth */,
 				9ED4ED852C7F6E0C0004C5CC /* FirebaseFirestore */,
 				9ED4ED872C7F6E0C0004C5CC /* FirebaseStorage */,
+				9EB20CF32C80B6ED003D5333 /* Auth */,
+				9EB20CF52C80B6ED003D5333 /* Storage */,
+				9EB20CF72C80B6ED003D5333 /* Supabase */,
 			);
 			productName = "swift-auth-fire-clerk-walletconnect-sup";
 			productReference = 9ED4ED4A2C7F6C890004C5CC /* swift-auth-fire-clerk-walletconnect-sup.app */;
@@ -413,6 +425,7 @@
 				9ED4ED7C2C7F6D8E0004C5CC /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				9ED4ED7F2C7F6DB10004C5CC /* XCRemoteSwiftPackageReference "clerk-ios" */,
 				9ED4ED822C7F6E0C0004C5CC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				9EB20CF22C80B6EC003D5333 /* XCRemoteSwiftPackageReference "supabase-swift" */,
 			);
 			productRefGroup = 9ED4ED4B2C7F6C890004C5CC /* Products */;
 			projectDirPath = "";
@@ -460,6 +473,7 @@
 				9ED4EDAC2C7F72C70004C5CC /* AuthView.swift in Sources */,
 				9EB20CEF2C804922003D5333 /* ClerkViewModel.swift in Sources */,
 				9ED4EDAA2C7F729B0004C5CC /* FirebaseAuthViewModel.swift in Sources */,
+				9EB20CFA2C80BD3A003D5333 /* AuthViewModelManager.swift in Sources */,
 				9ED4ED502C7F6C890004C5CC /* ContentView.swift in Sources */,
 				9ED4EDB02C7F72EF0004C5CC /* AuthenticationInputView.swift in Sources */,
 				9ED4ED932C7F6F920004C5CC /* MainView.swift in Sources */,
@@ -810,6 +824,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		9EB20CF22C80B6EC003D5333 /* XCRemoteSwiftPackageReference "supabase-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/supabase-community/supabase-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.5.1;
+			};
+		};
 		9ED4ED7C2C7F6D8E0004C5CC /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
@@ -837,6 +859,21 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		9EB20CF32C80B6ED003D5333 /* Auth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9EB20CF22C80B6EC003D5333 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Auth;
+		};
+		9EB20CF52C80B6ED003D5333 /* Storage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9EB20CF22C80B6EC003D5333 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Storage;
+		};
+		9EB20CF72C80B6ED003D5333 /* Supabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9EB20CF22C80B6EC003D5333 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Supabase;
+		};
 		9ED4ED7D2C7F6D8E0004C5CC /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 9ED4ED7C2C7F6D8E0004C5CC /* XCRemoteSwiftPackageReference "Kingfisher" */;
