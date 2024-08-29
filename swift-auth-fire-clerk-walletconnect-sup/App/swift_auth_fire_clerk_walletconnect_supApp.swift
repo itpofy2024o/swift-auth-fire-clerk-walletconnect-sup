@@ -6,10 +6,14 @@
 //
 
 import SwiftUI
+import Firebase
 
 @main
 struct swift_auth_fire_clerk_walletconnect_supApp: App {
     @StateObject var viewModel = AuthFirebaseViewModel()
+    init () {
+        FirebaseApp.configure()
+    }
     var body: some Scene {
         WindowGroup {
             ContentView().environmentObject(viewModel)
