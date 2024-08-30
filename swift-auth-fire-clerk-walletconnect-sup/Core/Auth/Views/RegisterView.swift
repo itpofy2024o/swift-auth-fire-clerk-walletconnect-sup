@@ -47,13 +47,13 @@ struct RegisterView: View {
                             Image(systemName: "checkmark.circle.fill")
                                 .imageScale(.large)
                                 .fontWeight(.bold)
-                                .foregroundColor(Color(.systemGreen))
+                                .foregroundColor(Color(.systemGreen)).padding(.top,25)
                         } else {
                             
                                 Image(systemName: "xmark.circle.fill")
                                     .imageScale(.large)
                                     .fontWeight(.bold)
-                                    .foregroundColor(Color(.systemRed))
+                                    .foregroundColor(Color(.systemRed)).padding(.top,25)
                         }
                     }
                 }
