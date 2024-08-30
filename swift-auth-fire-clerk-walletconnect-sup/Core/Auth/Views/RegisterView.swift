@@ -45,7 +45,7 @@ struct RegisterView: View {
                         withEmail:newEmail,password:password,
                         username:username,firstname:firstName,lastname:lastName)
                 }
-                print("hey bye")
+                print("Registration ing")
             } label: {
                 HStack {
                     Text("SIGN UP").fontWeight(.semibold)

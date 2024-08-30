@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ProfileView: View {
+    @EnvironmentObject var viewModel: AuthFirebaseViewModel
     let userName: String
         var body: some View {
             let firstWordSubSequence: String.SubSequence? = UserFirebase.Mock_User_Firebase.email.split(separator: "@").first
@@ -27,7 +28,10 @@ struct ProfileView: View {
                 
                 Section("Account") {
                     Button {
-                        print("user - \(userName) logged out")
+                        Task {
+                            viewModel.singOut()
+                            print("user - \(userName) logged out")
+                        }
                     } label : {
                         Text("Log Out").foregroundColor(.gray)
                     }
