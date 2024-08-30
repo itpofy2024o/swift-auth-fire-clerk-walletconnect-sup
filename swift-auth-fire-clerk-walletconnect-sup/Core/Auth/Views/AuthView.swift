@@ -13,6 +13,7 @@ struct AuthView: View {
     @State private var passwd = ""
     let method: String
     @EnvironmentObject var viewModel: AuthFirebaseViewModel
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         NavigationStack {
@@ -50,7 +51,17 @@ struct AuthView: View {
                 .opacity(isValid ? 1.0 : 0.42)
                 .background(.green)
                 .cornerRadius(17)
-                .padding(.top,20)
+                .padding(.top,12)
+                .padding(.bottom,12)
+                
+                NavigationLink {
+                    ForgetPasswordView()
+                } label : {
+                    Text("Forgot Password?")
+                        .font(.title3)
+                        .fontWeight(.medium)
+                        .foregroundColor(colorScheme == .dark ? Color(.blue):Color(.blue))
+                }
                 
                 Spacer()
                 

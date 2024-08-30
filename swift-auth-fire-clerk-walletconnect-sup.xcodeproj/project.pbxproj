@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9E89A3682C822ED000D6FD19 /* ForgetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E89A3672C822ED000D6FD19 /* ForgetPasswordView.swift */; };
 		9EB20CEB2C7F9478003D5333 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9EB20CEA2C7F9478003D5333 /* GoogleService-Info.plist */; };
 		9EB20CED2C80490C003D5333 /* SupbaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB20CEC2C80490B003D5333 /* SupbaseViewModel.swift */; };
 		9EB20CEF2C804922003D5333 /* ClerkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB20CEE2C804922003D5333 /* ClerkViewModel.swift */; };
@@ -61,6 +62,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9E89A3672C822ED000D6FD19 /* ForgetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPasswordView.swift; sourceTree = "<group>"; };
 		9EB20CEA2C7F9478003D5333 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		9EB20CEC2C80490B003D5333 /* SupbaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupbaseViewModel.swift; sourceTree = "<group>"; };
 		9EB20CEE2C804922003D5333 /* ClerkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClerkViewModel.swift; sourceTree = "<group>"; };
@@ -316,6 +318,7 @@
 				9ED4EDAB2C7F72C70004C5CC /* AuthView.swift */,
 				9ED4EDAD2C7F72D50004C5CC /* RegisterView.swift */,
 				9ED4EDAF2C7F72EF0004C5CC /* AuthenticationInputView.swift */,
+				9E89A3672C822ED000D6FD19 /* ForgetPasswordView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -477,6 +480,7 @@
 				9ED4EDA62C7F723A0004C5CC /* SplashAuthedView.swift in Sources */,
 				9ED4EDA02C7F71440004C5CC /* SplashBaseBackgroundView.swift in Sources */,
 				9ED4EDAE2C7F72D50004C5CC /* RegisterView.swift in Sources */,
+				9E89A3682C822ED000D6FD19 /* ForgetPasswordView.swift in Sources */,
 				9EB20CED2C80490C003D5333 /* SupbaseViewModel.swift in Sources */,
 				9ED4ED4E2C7F6C890004C5CC /* swift_auth_fire_clerk_walletconnect_supApp.swift in Sources */,
 				9ED4ED9A2C7F6FD30004C5CC /* PreferenceRowView.swift in Sources */,

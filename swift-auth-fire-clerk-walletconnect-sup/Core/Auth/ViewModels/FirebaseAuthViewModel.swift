@@ -85,12 +85,19 @@ class AuthFirebaseViewModel: ObservableObject {
         }
     }
     
-    
+    func resetPassword(forEmail email: String) async {
+        do {
+            try await Auth.auth().sendPasswordReset(withEmail: email)
+            print("Password reset email sent.")
+        } catch {
+            print("DEBUG reset password: \(error.localizedDescription)")
+        }
+    }
     
     func fetchUser() async {
         guard let uid = Auth.auth().currentUser?.uid else {return}
         guard let snapshot = try? await Firestore.firestore().collection("users").document(uid).getDocument() else {return}
         self.currentUser = try? snapshot.data(as: UserFirebase.self)
-        print("debug currentUser: \(self.currentUser as Any)")
+//        print("debug currentUser: \(self.currentUser as Any)")
     }
 }
