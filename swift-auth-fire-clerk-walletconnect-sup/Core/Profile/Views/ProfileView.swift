@@ -9,8 +9,40 @@ import SwiftUI
 
 struct ProfileView: View {
     @EnvironmentObject var viewModel: AuthFirebaseViewModel
-    let userName: String
-        var body: some View {
+    
+    var body: some View {
+        if (viewModel.currentUser != nil) {
+            let firstWordSubSequence: String.SubSequence? = viewModel.currentUser!.email.split(separator: "@").first
+            let email = firstWordSubSequence.map(String.init) ?? ""
+            List {
+                InfoCardView(username: viewModel.currentUser!.fullname, email:email).listRowBackground(Color.clear)
+                
+                Section("FootPrint") {
+                    Text("")
+                }
+                
+                Section("Preferences") {
+                    PreferenceRowView(
+                        iconName: "gear", header: "settings", tint: Color(.systemGray)
+                    )
+                }
+                
+                Section("Account") {
+                    Button {
+                        Task {
+                            viewModel.singOut()
+                        }
+                    } label : {
+                        Text("Log Out").foregroundColor(.gray)
+                    }
+                    
+                    Button {
+                    } label : {
+                        Text("Delete Account").foregroundColor(.red)
+                    }
+                }
+            }
+        } else {
             let firstWordSubSequence: String.SubSequence? = UserFirebase.Mock_User_Firebase.email.split(separator: "@").first
             let email = firstWordSubSequence.map(String.init) ?? ""
             List {
@@ -30,22 +62,23 @@ struct ProfileView: View {
                     Button {
                         Task {
                             viewModel.singOut()
-                            print("user - \(userName) logged out")
+                            print("user - Guest logged out")
                         }
                     } label : {
                         Text("Log Out").foregroundColor(.gray)
                     }
                     
                     Button {
-                        print("user - \(userName) deleted account")
+                        print("user - Guest deleted account")
                     } label : {
                         Text("Delete Account").foregroundColor(.red)
                     }
                 }
             }
         }
+    }
 }
 
 #Preview {
-    ProfileView(userName: "WonderWonn")
+    ProfileView()
 }

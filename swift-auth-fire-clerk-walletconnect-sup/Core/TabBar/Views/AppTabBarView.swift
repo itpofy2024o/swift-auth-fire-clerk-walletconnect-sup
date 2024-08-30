@@ -16,7 +16,7 @@ struct AppTabBarView: View {
             MainView()
                 .tabItem{Image(systemName: "water.waves")}
                 .tag(1)
-            ProfileView(userName: "WanderWong")
+            ProfileView()
                 .tabItem{Image(systemName: "person")}
                 .tag(2)
         }
