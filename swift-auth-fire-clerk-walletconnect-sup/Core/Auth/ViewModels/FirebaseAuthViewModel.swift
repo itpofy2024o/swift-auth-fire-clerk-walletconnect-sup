@@ -46,7 +46,13 @@ class AuthFirebaseViewModel: ObservableObject {
     }
     
     func singOut() {
-        
+        do {
+            try Auth.auth().signOut()
+            self.userSession = nil
+            self.currentUser = nil
+        } catch {
+            print("DEBUG sign out: \(error.localizedDescription)")
+        }
     }
     
     func deleteYourAccount() {
