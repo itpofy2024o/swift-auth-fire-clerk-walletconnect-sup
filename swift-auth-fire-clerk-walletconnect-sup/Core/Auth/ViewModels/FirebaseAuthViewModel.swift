@@ -66,7 +66,6 @@ class AuthFirebaseViewModel: ObservableObject {
     }
     
     func deleteYourAccount() {
-        
     }
     
     func fetchUser() async {
