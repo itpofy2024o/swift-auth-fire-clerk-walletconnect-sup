@@ -23,6 +23,8 @@ struct ForgetPasswordView: View {
             
             AuthenticationInputView(text:$email,label: "Email Address",placeholder: "youremailaddress@smtp.com")
                 .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
+                .padding(.horizontal,28)
+                .padding(.top,UIScreen.main.bounds.width*0.05)
             
             Button("Send Password Reset Link") {
                 Task {
