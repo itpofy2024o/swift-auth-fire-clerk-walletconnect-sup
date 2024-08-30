@@ -65,8 +65,27 @@ class AuthFirebaseViewModel: ObservableObject {
         }
     }
     
-    func deleteYourAccount() {
+    func deleteYourAccount() async {
+        guard let uid = Auth.auth().currentUser?.uid else {
+            print("DEBUG: No user is currently signed in.")
+            return
+        }
+        
+        do {
+            let firestore = Firestore.firestore()
+            try await firestore.collection("users").document(uid).delete()
+            
+            try await Auth.auth().currentUser?.delete()
+            
+            self.userSession = nil
+            self.currentUser = nil
+            
+        } catch {
+            print("DEBUG delete user: \(error.localizedDescription)")
+        }
     }
+    
+    
     
     func fetchUser() async {
         guard let uid = Auth.auth().currentUser?.uid else {return}

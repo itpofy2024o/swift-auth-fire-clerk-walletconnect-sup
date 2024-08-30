@@ -37,6 +37,9 @@ struct ProfileView: View {
                     }
                     
                     Button {
+                        Task {
+                            await viewModel.deleteYourAccount()
+                        }
                     } label : {
                         Text("Delete Account").foregroundColor(.red)
                     }
@@ -57,28 +60,11 @@ struct ProfileView: View {
                         iconName: "gear", header: "settings", tint: Color(.systemGray)
                     )
                 }
-                
-                Section("Account") {
-                    Button {
-                        Task {
-                            viewModel.singOut()
-                            print("user - Guest logged out")
-                        }
-                    } label : {
-                        Text("Log Out").foregroundColor(.gray)
-                    }
-                    
-                    Button {
-                        print("user - Guest deleted account")
-                    } label : {
-                        Text("Delete Account").foregroundColor(.red)
-                    }
-                }
             }
         }
     }
 }
 
 #Preview {
-    ProfileView()
+    ProfileView().environmentObject(AuthFirebaseViewModel())
 }
