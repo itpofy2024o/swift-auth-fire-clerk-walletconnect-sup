@@ -16,6 +16,9 @@ class AuthFirebaseViewModel: ObservableObject {
     
     init () {
         self.userSession = Auth.auth().currentUser
+        Task {
+            await fetchUser()
+        }
     }
     
     func signIn(withEmail email:String, password: String) async throws {
@@ -51,5 +54,8 @@ class AuthFirebaseViewModel: ObservableObject {
     
     func fetchUser() async {
         guard let uid = Auth.auth().currentUser?.uid else {return}
+        guard let snapshot = try? await Firestore.firestore().collection("users").document(uid).getDocument() else {return}
+        self.currentUser = try? snapshot.data(as: UserFirebase.self)
+        print("debug currentUser: \(self.currentUser as Any)")
     }
 }
