@@ -34,7 +34,23 @@ struct RegisterView: View {
                 AuthenticationInputView(text:$firstName,label: "First Name",placeholder: "Alexander")
                 AuthenticationInputView(text:$lastName,label: "Last Name",placeholder: "Bularia")
                 AuthenticationInputView(text:$password,label: "Password",placeholder: "thisispassword_youknowit",isSecureInfo: true)
-                AuthenticationInputView(text:$confirmation,label: "Confirm Password",placeholder: "xxxxxxxxxxxxxxxxxxxxxxxx",isSecureInfo: true)
+                ZStack(alignment:.trailing) {
+                    AuthenticationInputView(text:$confirmation,label: "Confirm Password",placeholder: "xxxxxxxxxxxxxxxxxxxxxxxx",isSecureInfo: true)
+                    if !password.isEmpty && !confirmation.isEmpty {
+                        if password == confirmation {
+                            Image(systemName: "checkmark.circle.fill")
+                                .imageScale(.large)
+                                .fontWeight(.bold)
+                                .foregroundColor(Color(.systemGreen))
+                        } else {
+                            
+                                Image(systemName: "xmark.circle.fill")
+                                    .imageScale(.large)
+                                    .fontWeight(.bold)
+                                    .foregroundColor(Color(.systemRed))
+                        }
+                    }
+                }
             }
             .padding(.horizontal,28)
             .padding(.top,UIScreen.main.bounds.width*0.05)
@@ -55,6 +71,8 @@ struct RegisterView: View {
                     .padding(5)
             }
             .background(.brown)
+            .disabled(!isValid)
+            .opacity(isValid ? 1.0 : 0.42)
             .cornerRadius(17)
             .padding(.top,20)
             
@@ -69,6 +87,18 @@ struct RegisterView: View {
                 }
             }
         }
+    }
+}
+
+extension RegisterView: FirebaseAuthenticanFormProtocol {
+    var isValid: Bool {
+        return !newEmail.isEmpty && newEmail.contains("@") &&
+        !password.isEmpty && password.count > 7
+        && password.rangeOfCharacter(from: CharacterSet.uppercaseLetters) != nil
+        && password.rangeOfCharacter(from: CharacterSet.lowercaseLetters) != nil
+        && password.rangeOfCharacter(from: CharacterSet.decimalDigits) != nil
+        && !firstName.isEmpty && !lastName.isEmpty &&
+        firstName.count > 2 && lastName.count > 2 && confirmation == password && !username.isEmpty && username.count > 4 && username.count < 14
     }
 }
 

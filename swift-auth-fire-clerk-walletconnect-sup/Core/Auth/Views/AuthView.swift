@@ -46,6 +46,8 @@ struct AuthView: View {
                         .frame(width: UIScreen.main.bounds.width-85,height: 44)
                         .padding(5)
                 }
+                .disabled(!isValid)
+                .opacity(isValid ? 1.0 : 0.42)
                 .background(.green)
                 .cornerRadius(17)
                 .padding(.top,20)
@@ -62,6 +64,13 @@ struct AuthView: View {
                 }
             }
         }
+    }
+}
+
+extension AuthView: FirebaseAuthenticanFormProtocol {
+    var isValid: Bool {
+        return !email.isEmpty && email.contains("@") &&
+        !passwd.isEmpty && passwd.count > 7
     }
 }
 
