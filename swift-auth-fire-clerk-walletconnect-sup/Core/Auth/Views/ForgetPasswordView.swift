@@ -11,6 +11,7 @@ import Kingfisher
 struct ForgetPasswordView: View {
     @State private var email: String = ""
     @State private var isResetLinkSent: Bool = false
+    @State private var shouldNavigate: Bool = false
     @EnvironmentObject var authViewModel: AuthFirebaseViewModel
 
     var body: some View {
@@ -30,10 +31,18 @@ struct ForgetPasswordView: View {
                 Button("Send Password Reset Link") {
                     Task {
                         await authViewModel.resetPassword(forEmail: email)
-                        isResetLinkSent = true
+                        withAnimation {
+                            isResetLinkSent = true
+                        }
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                            withAnimation {
+                                shouldNavigate = true
+                            }
+                        }
                     }
                 }
-                .padding()
+                .padding().disabled(!isValid)
+                .opacity(isValid ? 1.0 : 0.42)
                 
                 if isResetLinkSent {
                     Text("Succeeded!!")
@@ -45,15 +54,17 @@ struct ForgetPasswordView: View {
                 }
             }
             .padding()
-            .onAppear {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                    return
-                }
-            }.navigationDestination(isPresented: $isResetLinkSent) {
+            .navigationDestination(isPresented: $shouldNavigate) {
                 AuthView(method: "firebase")
                     .navigationBarBackButtonHidden(true)
             }
         }
+    }
+}
+
+extension ForgetPasswordView: FirebaseAuthenticanFormProtocol {
+    var isValid: Bool {
+        return !email.isEmpty && email.contains("@") && email.contains(".")
     }
 }
 
