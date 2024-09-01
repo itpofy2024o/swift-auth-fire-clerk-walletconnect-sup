@@ -8,9 +8,11 @@
 import SwiftUI
 import Kingfisher
 
+// for no authed
+
 struct SplashUnitedView: View {
+    @Binding var isSplashShown: Bool
     @State private var navigateToView = false
-    @EnvironmentObject var viewModel: AuthFirebaseViewModel
     @Environment(\.colorScheme) var colorScheme
     var body: some View {
         NavigationStack {
@@ -44,13 +46,12 @@ struct SplashUnitedView: View {
                         self.navigateToView = true
                     }
                 }.navigationDestination(isPresented: $navigateToView) {
-                    if viewModel.userSession != nil {
-                        AppTabBarView()
-                            .navigationBarBackButtonHidden(true)
-                    } else {
-                        AuthView(method:"firebase")
-                            .navigationBarBackButtonHidden(true)
-                    }
+                    AuthView(method:"firebase") 
+                        .navigationBarBackButtonHidden(true)
+                        .onAppear {
+                            UserDefaults.standard.set(true, forKey: "hasShownSplash")
+                            isSplashShown = true
+                        }
                 }
             }
         }
@@ -58,5 +59,6 @@ struct SplashUnitedView: View {
 }
 
 #Preview {
-    SplashUnitedView().environmentObject(AuthFirebaseViewModel())
+    SplashUnitedView(isSplashShown: Binding.constant(false))
+//        .environmentObject(AuthFirebaseViewModel())
 }
