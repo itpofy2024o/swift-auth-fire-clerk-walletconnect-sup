@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9E89A3682C822ED000D6FD19 /* ForgetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E89A3672C822ED000D6FD19 /* ForgetPasswordView.swift */; };
+		9E89A36A2C84B80700D6FD19 /* SplashUnitedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E89A3692C84B80600D6FD19 /* SplashUnitedView.swift */; };
 		9EB20CEB2C7F9478003D5333 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9EB20CEA2C7F9478003D5333 /* GoogleService-Info.plist */; };
 		9EB20CED2C80490C003D5333 /* SupbaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB20CEC2C80490B003D5333 /* SupbaseViewModel.swift */; };
 		9EB20CEF2C804922003D5333 /* ClerkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB20CEE2C804922003D5333 /* ClerkViewModel.swift */; };
@@ -63,6 +64,7 @@
 
 /* Begin PBXFileReference section */
 		9E89A3672C822ED000D6FD19 /* ForgetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPasswordView.swift; sourceTree = "<group>"; };
+		9E89A3692C84B80600D6FD19 /* SplashUnitedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashUnitedView.swift; sourceTree = "<group>"; };
 		9EB20CEA2C7F9478003D5333 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		9EB20CEC2C80490B003D5333 /* SupbaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupbaseViewModel.swift; sourceTree = "<group>"; };
 		9EB20CEE2C804922003D5333 /* ClerkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClerkViewModel.swift; sourceTree = "<group>"; };
@@ -297,6 +299,7 @@
 				9ED4EDA12C7F71A20004C5CC /* SplashNullUserView.swift */,
 				9ED4EDA32C7F71E90004C5CC /* SplashOverTextView.swift */,
 				9ED4EDA52C7F72390004C5CC /* SplashAuthedView.swift */,
+				9E89A3692C84B80600D6FD19 /* SplashUnitedView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -478,6 +481,7 @@
 				9ED4ED932C7F6F920004C5CC /* MainView.swift in Sources */,
 				9EB20CF12C80493A003D5333 /* WalletConnectViewModel.swift in Sources */,
 				9ED4EDA62C7F723A0004C5CC /* SplashAuthedView.swift in Sources */,
+				9E89A36A2C84B80700D6FD19 /* SplashUnitedView.swift in Sources */,
 				9ED4EDA02C7F71440004C5CC /* SplashBaseBackgroundView.swift in Sources */,
 				9ED4EDAE2C7F72D50004C5CC /* RegisterView.swift in Sources */,
 				9E89A3682C822ED000D6FD19 /* ForgetPasswordView.swift in Sources */,
