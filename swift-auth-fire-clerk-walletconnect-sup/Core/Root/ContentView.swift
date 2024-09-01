@@ -14,7 +14,7 @@ struct ContentView: View {
             if viewModel.userSession != nil {
                 SplashAuthedView()
             } else {
-                SplashNullUserView()
+                SplashUnitedView()
             }
         }
     }
