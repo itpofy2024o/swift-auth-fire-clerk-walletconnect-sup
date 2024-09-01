@@ -16,7 +16,8 @@ struct ForgetPasswordView: View {
 
     var body: some View {
         NavigationStack {
-            VStack {KFImage(URL(string:"https://moralis.io/wp-content/uploads/2023/11/Phantom-Wallet.png"))
+            VStack{
+                KFImage(URL(string:"https://moralis.io/wp-content/uploads/2023/11/Phantom-Wallet.png"))
                     .resizable()
                     .scaledToFit()
                     .frame(width:UIScreen.main.bounds.width*0.4)
@@ -28,7 +29,7 @@ struct ForgetPasswordView: View {
                     .padding(.horizontal,28)
                     .padding(.top,UIScreen.main.bounds.width*0.05)
                 
-                Button("Send Password Reset Link") {
+                Button{
                     Task {
                         await authViewModel.resetPassword(forEmail: email)
                         withAnimation {
@@ -40,9 +41,10 @@ struct ForgetPasswordView: View {
                             }
                         }
                     }
+                } label : {
+                    Text("Send Password Reset Link").foregroundColor(.red).fontWeight(.semibold)
                 }
                 .padding().disabled(!isValid)
-                .opacity(isValid ? 1.0 : 0.42)
                 
                 if isResetLinkSent {
                     Text("Succeeded!!")
