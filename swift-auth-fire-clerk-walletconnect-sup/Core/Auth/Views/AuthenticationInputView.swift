@@ -20,6 +20,9 @@ struct AuthenticationInputView: View {
             if isSecureInfo {
                 SecureField(placeholder,text:$text)
                     .font(.system(size:17))
+                    .textContentType(.none)
+                    .autocapitalization(.none)
+                    .disableAutocorrection(true)
             } else {
                 TextField(placeholder,text:$text)
                     .font(.system(size: 17))

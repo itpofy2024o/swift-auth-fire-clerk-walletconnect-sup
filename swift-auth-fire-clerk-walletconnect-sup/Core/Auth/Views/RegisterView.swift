@@ -34,14 +34,8 @@ struct RegisterView: View {
                 AuthenticationInputView(text:$firstName,label: "First Name",placeholder: "Alexander")
                 AuthenticationInputView(text:$lastName,label: "Last Name",placeholder: "Bularia")
                 AuthenticationInputView(text:$password,label: "Password",placeholder: "thisispassword_youknowit",isSecureInfo: true)
-                    .textContentType(.none)
-                    .autocapitalization(.none)
-                    .disableAutocorrection(true)
                 ZStack(alignment:.trailing) {
                     AuthenticationInputView(text:$confirmation,label: "Confirm Password",placeholder: "xxxxxxxxxxxxxxxxxxxxxxxx",isSecureInfo: true)
-                        .textContentType(.none)
-                        .autocapitalization(.none)
-                        .disableAutocorrection(true)
                     if !password.isEmpty && !confirmation.isEmpty {
                         if password == confirmation {
                             Image(systemName: "checkmark.circle.fill")
