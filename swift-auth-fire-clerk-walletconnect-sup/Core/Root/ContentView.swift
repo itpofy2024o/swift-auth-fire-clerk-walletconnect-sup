@@ -35,9 +35,9 @@ struct ContentView: View {
             }
         }
         .onChange(of: isActive) {
-            if !isActive { // App went to background
+            if !isActive {
                 showSplash = true
-            } else { // App became active
+            } else {
                 if isSplashShown {
                     showSplash = false
                 }

@@ -18,11 +18,9 @@ struct AppTabBarView: View {
             MainView()
                 .tabItem{Image(systemName: "water.waves")}
                 .tag(1)
-            if viewModel.currentUser != nil {
-                ProfileView()
-                    .tabItem { Image(systemName: "person") }
-                    .tag(2)
-            }
+            ProfileView()
+                .tabItem { Image(systemName: "person") }
+                .tag(2)
         }
         .tint(.primary)
     }
