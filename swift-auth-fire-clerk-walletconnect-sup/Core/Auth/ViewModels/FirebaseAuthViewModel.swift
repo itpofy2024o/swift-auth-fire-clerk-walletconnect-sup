@@ -19,6 +19,12 @@ protocol FirebaseAuthenticanFormProtocol {
 class AuthFirebaseViewModel: ObservableObject {
     @Published var userSession: FirebaseAuth.User?
     @Published var currentUser: UserFirebase?
+    @Published var authStatus: AuthStatus = .loggedOut
+    
+    enum AuthStatus {
+        case loggedIn
+        case loggedOut
+    }
     
     init () {
         self.userSession = Auth.auth().currentUser
@@ -31,6 +37,7 @@ class AuthFirebaseViewModel: ObservableObject {
         do {
             let res = try await Auth.auth().signIn(withEmail: email, password: password)
             self.userSession = res.user
+            authStatus = .loggedIn
             await fetchUser()
         } catch {
             print("debug sign in: \(error.localizedDescription)")
@@ -51,6 +58,7 @@ class AuthFirebaseViewModel: ObservableObject {
             let user = UserFirebase(id:result.user.uid,fullname:fullname,username:username,email:email)
             let encodedUser = try Firestore.Encoder().encode(user)
             try await Firestore.firestore().collection("users").document(user.id).setData(encodedUser)
+            authStatus = .loggedIn
             await fetchUser()
         } catch {
             print("firebase create new user: \(error.localizedDescription)")
@@ -62,6 +70,7 @@ class AuthFirebaseViewModel: ObservableObject {
             try Auth.auth().signOut()
             self.userSession = nil
             self.currentUser = nil
+            authStatus = .loggedOut
         } catch {
             print("DEBUG sign out: \(error.localizedDescription)")
         }
@@ -82,6 +91,7 @@ class AuthFirebaseViewModel: ObservableObject {
             self.userSession = nil
             self.currentUser = nil
             
+            authStatus = .loggedOut
         } catch {
             print("DEBUG delete user: \(error.localizedDescription)")
         }
@@ -100,6 +110,5 @@ class AuthFirebaseViewModel: ObservableObject {
         guard let uid = Auth.auth().currentUser?.uid else {return}
         guard let snapshot = try? await Firestore.firestore().collection("users").document(uid).getDocument() else {return}
         self.currentUser = try? snapshot.data(as: UserFirebase.self)
-//        print("debug currentUser: \(self.currentUser as Any)")
     }
 }

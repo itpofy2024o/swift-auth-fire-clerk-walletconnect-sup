@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct AppTabBarView: View {
-    @EnvironmentObject var viewModel: AuthFirebaseViewModel
     @State private var selectedTab: Int = 1
     var body: some View {
         TabView(selection: $selectedTab) {
@@ -27,5 +26,5 @@ struct AppTabBarView: View {
 }
 
 #Preview {
-    AppTabBarView().environmentObject(AuthFirebaseViewModel())
+    AppTabBarView()
 }

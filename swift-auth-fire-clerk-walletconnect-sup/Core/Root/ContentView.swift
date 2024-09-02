@@ -9,48 +9,38 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var viewModel: AuthFirebaseViewModel
-    @Binding var isActive: Bool
-    @State private var isSplashShown: Bool = UserDefaults.standard.bool(forKey: "hasShownSplash")
-    @State private var showSplash: Bool = true
+    @State private var showSplash = true
+    @Environment(\.scenePhase) private var scenePhase
     var body: some View {
-        Group {
+        ZStack {
             if showSplash {
-                if viewModel.userSession != nil {
-                    SplashAuthedView(isSplashShown: $isSplashShown)
-                } else {
-                    SplashUnitedView(isSplashShown: $isSplashShown)
-                }
+                SplashOnlyView()
+                    .onAppear {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                            showSplash = false
+                        }
+                    }
             } else {
-                if viewModel.userSession != nil {
+                switch viewModel.authStatus {
+                case .loggedIn:
                     AppTabBarView()
-                } else {
-                    AuthView(method: "firebase")
+                case .loggedOut:
+                    AuthView(method:"")
+                        .environmentObject(viewModel)
                 }
             }
-        }
-        .onChange(of: viewModel.userSession) {
-            if viewModel.userSession != nil && isActive {
-                UserDefaults.standard.set(true, forKey: "hasShownSplash")
-                isSplashShown = true
-            }
-        }
-        .onChange(of: isActive) {
-            if !isActive {
+        }.onChange(of: scenePhase) {
+            if scenePhase == .active {
                 showSplash = true
-            } else {
-                if isSplashShown {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                     showSplash = false
                 }
-            }
-        }
-        .onAppear {
-            if !isSplashShown {
-                showSplash = true
             }
         }
     }
 }
 
+
 #Preview {
-    ContentView(isActive: Binding.constant(true)).environmentObject(AuthFirebaseViewModel())
+    ContentView().environmentObject(AuthFirebaseViewModel())
 }
