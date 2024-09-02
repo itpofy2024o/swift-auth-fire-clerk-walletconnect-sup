@@ -58,7 +58,7 @@ struct CenteredTextWithIndicator: View {
             Spacer()
             ProgressView()
                 .progressViewStyle(CircularProgressViewStyle())
-            Text("Loading...")
+            Text("Loading...").padding(.leading,10)
             Spacer()
         }
         .frame(maxWidth: .infinity)
