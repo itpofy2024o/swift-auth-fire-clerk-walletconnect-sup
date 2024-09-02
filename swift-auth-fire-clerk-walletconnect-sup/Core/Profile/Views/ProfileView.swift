@@ -10,8 +10,8 @@ import SwiftUI
 struct ProfileView: View {
     @EnvironmentObject var viewModel: AuthFirebaseViewModel
     var body: some View {
-        List {
-            if let currentUser = viewModel.currentUser {
+        if let currentUser = viewModel.currentUser {
+            List {
                 let firstWordSubSequence: String.SubSequence? = currentUser.email.split(separator: "@").first
                 let email = firstWordSubSequence.map(String.init) ?? ""
 
@@ -45,10 +45,23 @@ struct ProfileView: View {
                         Text("Delete Account").foregroundColor(.red)
                     }
                 }
-            } else {
-                Text("Loading").listRowBackground(Color.clear)
             }
+        } else {
+            CenteredTextWithIndicator()
         }
+    }
+}
+
+struct CenteredTextWithIndicator: View {
+    var body: some View {
+        HStack {
+            Spacer()
+            ProgressView()
+                .progressViewStyle(CircularProgressViewStyle())
+            Text("Loading...")
+            Spacer()
+        }
+        .frame(maxWidth: .infinity)
     }
 }
 
