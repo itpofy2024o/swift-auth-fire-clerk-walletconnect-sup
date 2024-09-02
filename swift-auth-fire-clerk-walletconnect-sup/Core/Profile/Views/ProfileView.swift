@@ -17,37 +17,36 @@ struct ProfileView: View {
 
                 InfoCardView(username: currentUser.fullname, email: email)
                     .listRowBackground(Color.clear)
-            } else {
-                InfoCardView(username: "Unknown", email: "No Email")
-                    .listRowBackground(Color.clear)
-            }
-            
-            Section("FootPrint") {
-                Text("")
-            }
-            
-            Section("Preferences") {
-                PreferenceRowView(
-                    iconName: "gear", header: "settings", tint: Color(.systemGray)
-                )
-            }
-            
-            Section("Account") {
-                Button {
-                    Task {
-                        viewModel.singOut()
-                    }
-                } label : {
-                    Text("Log Out").foregroundColor(.gray)
+                
+                Section("FootPrint") {
+                    Text("")
                 }
                 
-                Button {
-                    Task {
-                        await viewModel.deleteYourAccount()
-                    }
-                } label : {
-                    Text("Delete Account").foregroundColor(.red)
+                Section("Preferences") {
+                    PreferenceRowView(
+                        iconName: "gear", header: "settings", tint: Color(.systemGray)
+                    )
                 }
+                
+                Section("Account") {
+                    Button {
+                        Task {
+                            viewModel.singOut()
+                        }
+                    } label : {
+                        Text("Log Out").foregroundColor(.gray)
+                    }
+                    
+                    Button {
+                        Task {
+                            await viewModel.deleteYourAccount()
+                        }
+                    } label : {
+                        Text("Delete Account").foregroundColor(.red)
+                    }
+                }
+            } else {
+                Text("Loading").listRowBackground(Color.clear)
             }
         }
     }
