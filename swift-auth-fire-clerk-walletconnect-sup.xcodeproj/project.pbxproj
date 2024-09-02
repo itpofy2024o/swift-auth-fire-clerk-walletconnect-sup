@@ -11,6 +11,7 @@
 		9E89A36A2C84B80700D6FD19 /* SplashUnitedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E89A3692C84B80600D6FD19 /* SplashUnitedView.swift */; };
 		9E89A36D2C85BD5300D6FD19 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 9E89A36C2C85BD5300D6FD19 /* GoogleSignIn */; };
 		9E89A36F2C85BD5300D6FD19 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9E89A36E2C85BD5300D6FD19 /* GoogleSignInSwift */; };
+		9E89A3722C85D1FE00D6FD19 /* SplashOnlyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E89A3712C85D1FE00D6FD19 /* SplashOnlyView.swift */; };
 		9EB20CEB2C7F9478003D5333 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9EB20CEA2C7F9478003D5333 /* GoogleService-Info.plist */; };
 		9EB20CED2C80490C003D5333 /* SupbaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB20CEC2C80490B003D5333 /* SupbaseViewModel.swift */; };
 		9EB20CEF2C804922003D5333 /* ClerkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB20CEE2C804922003D5333 /* ClerkViewModel.swift */; };
@@ -68,6 +69,7 @@
 		9E89A3672C822ED000D6FD19 /* ForgetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPasswordView.swift; sourceTree = "<group>"; };
 		9E89A3692C84B80600D6FD19 /* SplashUnitedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashUnitedView.swift; sourceTree = "<group>"; };
 		9E89A3702C85C6FD00D6FD19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		9E89A3712C85D1FE00D6FD19 /* SplashOnlyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashOnlyView.swift; sourceTree = "<group>"; };
 		9EB20CEA2C7F9478003D5333 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		9EB20CEC2C80490B003D5333 /* SupbaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupbaseViewModel.swift; sourceTree = "<group>"; };
 		9EB20CEE2C804922003D5333 /* ClerkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClerkViewModel.swift; sourceTree = "<group>"; };
@@ -306,6 +308,7 @@
 				9ED4EDA32C7F71E90004C5CC /* SplashOverTextView.swift */,
 				9ED4EDA52C7F72390004C5CC /* SplashAuthedView.swift */,
 				9E89A3692C84B80600D6FD19 /* SplashUnitedView.swift */,
+				9E89A3712C85D1FE00D6FD19 /* SplashOnlyView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -499,6 +502,7 @@
 				9ED4ED9A2C7F6FD30004C5CC /* PreferenceRowView.swift in Sources */,
 				9ED4ED962C7F6FB30004C5CC /* InfoCardView.swift in Sources */,
 				9ED4ED982C7F6FBF0004C5CC /* ProfileView.swift in Sources */,
+				9E89A3722C85D1FE00D6FD19 /* SplashOnlyView.swift in Sources */,
 				9ED4ED9D2C7F71040004C5CC /* AppTabBarView.swift in Sources */,
 				9ED4EDB22C7F73FF0004C5CC /* UserSupbase.swift in Sources */,
 				9ED4ED7B2C7F6D550004C5CC /* UserFirebase.swift in Sources */,

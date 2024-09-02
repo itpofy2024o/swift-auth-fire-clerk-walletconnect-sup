@@ -11,7 +11,6 @@ import Kingfisher
 // for no authed
 
 struct SplashUnitedView: View {
-    @Binding var isSplashShown: Bool
     @State private var navigateToView = false
     @Environment(\.colorScheme) var colorScheme
     var body: some View {
@@ -48,10 +47,6 @@ struct SplashUnitedView: View {
                 }.navigationDestination(isPresented: $navigateToView) {
                     AuthView(method:"firebase") 
                         .navigationBarBackButtonHidden(true)
-                        .onAppear {
-                            UserDefaults.standard.set(true, forKey: "hasShownSplash")
-                            isSplashShown = true
-                        }
                 }
             }
         }
@@ -59,6 +54,5 @@ struct SplashUnitedView: View {
 }
 
 #Preview {
-    SplashUnitedView(isSplashShown: Binding.constant(false))
-//        .environmentObject(AuthFirebaseViewModel())
+    SplashUnitedView()
 }

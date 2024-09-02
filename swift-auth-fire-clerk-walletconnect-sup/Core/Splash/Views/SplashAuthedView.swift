@@ -9,8 +9,6 @@ import SwiftUI
 import Kingfisher
 
 struct SplashAuthedView: View {
-    
-    @Binding var isSplashShown: Bool
     @State private var navigateToViewHome = false
     @Environment(\.colorScheme) var colorScheme
     var body: some View {
@@ -47,10 +45,6 @@ struct SplashAuthedView: View {
                 }.navigationDestination(isPresented: $navigateToViewHome) {
                     AppTabBarView()
                         .navigationBarBackButtonHidden(true)
-                        .onAppear {
-                            UserDefaults.standard.set(true, forKey: "hasShownSplash")
-                            isSplashShown = true
-                        }
                 }
             }
         }
@@ -58,5 +52,5 @@ struct SplashAuthedView: View {
 }
 
 #Preview {
-    SplashAuthedView(isSplashShown: Binding.constant(false))
+    SplashAuthedView()
 }
