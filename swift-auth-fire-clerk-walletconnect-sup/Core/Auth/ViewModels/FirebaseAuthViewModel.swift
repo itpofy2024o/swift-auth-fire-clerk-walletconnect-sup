@@ -6,7 +6,9 @@
 //
 
 import Foundation
+import FirebaseCore
 import FirebaseAuth
+import GoogleSignIn
 import FirebaseFirestore
 
 protocol FirebaseAuthenticanFormProtocol {
