@@ -9,6 +9,7 @@ import Foundation
 import FirebaseCore
 import FirebaseAuth
 import GoogleSignIn
+import AuthenticationServices
 import FirebaseFirestore
 
 protocol FirebaseAuthenticanFormProtocol {
@@ -25,6 +26,7 @@ class AuthFirebaseViewModel: ObservableObject {
         case loggedIn
         case loggedOut
         case unknown
+        case anonymous
     }
     
     init () {
@@ -75,18 +77,6 @@ class AuthFirebaseViewModel: ObservableObject {
         }
     }
     
-    func signOut() {
-        do {
-            try Auth.auth().signOut()
-            GIDSignIn.sharedInstance.signOut()
-            self.userSession = nil
-            self.currentUser = nil
-            updateAuthStatus()
-        } catch {
-            print("DEBUG sign out: \(error.localizedDescription)")
-        }
-    }
-    
     func singOut() {
         do {
             try Auth.auth().signOut()
@@ -98,25 +88,14 @@ class AuthFirebaseViewModel: ObservableObject {
         }
     }
     
-    func deleteYourGAccount() async {
-        guard let uid = Auth.auth().currentUser?.uid else {
-            print("DEBUG: No user is currently signed in.")
-            return
-        }
-        
+    func signInAnonymously() async {
         do {
-            let firestore = Firestore.firestore()
-            try await firestore.collection("users").document(uid).delete()
-            
-            try await Auth.auth().currentUser?.delete()
-            GIDSignIn.sharedInstance.signOut()
-            
-            self.userSession = nil
-            self.currentUser = nil
-            
-            updateAuthStatus()
+            let authResult = try await Auth.auth().signInAnonymously()
+            self.userSession = authResult.user
+            authStatus = .anonymous
+            await fetchUser()
         } catch {
-            print("DEBUG delete user: \(error.localizedDescription)")
+            print("DEBUG: Anonymous sign-in error: \(error.localizedDescription)")
         }
     }
     

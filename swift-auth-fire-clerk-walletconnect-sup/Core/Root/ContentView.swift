@@ -28,8 +28,8 @@ struct ContentView: View {
                     case .loggedOut:
                         AuthView(method:"")
                             .environmentObject(viewModel)
-                    case .unknown:
-                        EmptyView()
+                    case .unknown, .anonymous:
+                            EmptyView()
                 }
             }
         }
