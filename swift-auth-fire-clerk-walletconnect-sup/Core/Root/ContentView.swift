@@ -24,7 +24,7 @@ struct ContentView: View {
                     }
             } else {
                 switch viewModel.authStatus {
-                    case .loggedIn:
+                case .loggedIn, .googled:
                         AppTabBarView()
                     case .loggedOut:
                         AuthView(method:"")

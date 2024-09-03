@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9E7D4EDC2C8772A2003BDE1F /* GoogleAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7D4EDB2C8772A2003BDE1F /* GoogleAuthView.swift */; };
 		9E89A3682C822ED000D6FD19 /* ForgetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E89A3672C822ED000D6FD19 /* ForgetPasswordView.swift */; };
 		9E89A36A2C84B80700D6FD19 /* SplashUnitedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E89A3692C84B80600D6FD19 /* SplashUnitedView.swift */; };
 		9E89A36D2C85BD5300D6FD19 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 9E89A36C2C85BD5300D6FD19 /* GoogleSignIn */; };
@@ -66,6 +67,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9E7D4EDB2C8772A2003BDE1F /* GoogleAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAuthView.swift; sourceTree = "<group>"; };
 		9E89A3672C822ED000D6FD19 /* ForgetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPasswordView.swift; sourceTree = "<group>"; };
 		9E89A3692C84B80600D6FD19 /* SplashUnitedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashUnitedView.swift; sourceTree = "<group>"; };
 		9E89A3702C85C6FD00D6FD19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -331,6 +333,7 @@
 				9ED4EDAD2C7F72D50004C5CC /* RegisterView.swift */,
 				9ED4EDAF2C7F72EF0004C5CC /* AuthenticationInputView.swift */,
 				9E89A3672C822ED000D6FD19 /* ForgetPasswordView.swift */,
+				9E7D4EDB2C8772A2003BDE1F /* GoogleAuthView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -494,6 +497,7 @@
 				9EB20CF12C80493A003D5333 /* WalletConnectViewModel.swift in Sources */,
 				9ED4EDA62C7F723A0004C5CC /* SplashAuthedView.swift in Sources */,
 				9E89A36A2C84B80700D6FD19 /* SplashUnitedView.swift in Sources */,
+				9E7D4EDC2C8772A2003BDE1F /* GoogleAuthView.swift in Sources */,
 				9ED4EDA02C7F71440004C5CC /* SplashBaseBackgroundView.swift in Sources */,
 				9ED4EDAE2C7F72D50004C5CC /* RegisterView.swift in Sources */,
 				9E89A3682C822ED000D6FD19 /* ForgetPasswordView.swift in Sources */,

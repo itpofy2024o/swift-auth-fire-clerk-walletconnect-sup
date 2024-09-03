@@ -31,6 +31,7 @@ class AuthFirebaseViewModel: ObservableObject {
         case loggedOut
         case unknown
         case anonymous
+        case googled
     }
     
     init () {
@@ -74,6 +75,7 @@ class AuthFirebaseViewModel: ObservableObject {
             withIDToken: idToken, accessToken: user.accessToken.tokenString
         )
         try await Auth.auth().signIn(with: credential)
+        authStatus = .googled
     }
     
     func logoutgg() async throws {
