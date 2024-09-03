@@ -75,6 +75,18 @@ class AuthFirebaseViewModel: ObservableObject {
         }
     }
     
+    func signOut() {
+        do {
+            try Auth.auth().signOut()
+            GIDSignIn.sharedInstance.signOut()
+            self.userSession = nil
+            self.currentUser = nil
+            updateAuthStatus()
+        } catch {
+            print("DEBUG sign out: \(error.localizedDescription)")
+        }
+    }
+    
     func singOut() {
         do {
             try Auth.auth().signOut()
@@ -83,6 +95,28 @@ class AuthFirebaseViewModel: ObservableObject {
             updateAuthStatus()
         } catch {
             print("DEBUG sign out: \(error.localizedDescription)")
+        }
+    }
+    
+    func deleteYourGAccount() async {
+        guard let uid = Auth.auth().currentUser?.uid else {
+            print("DEBUG: No user is currently signed in.")
+            return
+        }
+        
+        do {
+            let firestore = Firestore.firestore()
+            try await firestore.collection("users").document(uid).delete()
+            
+            try await Auth.auth().currentUser?.delete()
+            GIDSignIn.sharedInstance.signOut()
+            
+            self.userSession = nil
+            self.currentUser = nil
+            
+            updateAuthStatus()
+        } catch {
+            print("DEBUG delete user: \(error.localizedDescription)")
         }
     }
     
