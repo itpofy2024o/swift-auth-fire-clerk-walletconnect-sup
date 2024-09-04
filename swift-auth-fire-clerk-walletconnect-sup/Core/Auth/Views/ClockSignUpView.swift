@@ -9,25 +9,26 @@ import SwiftUI
 import ClerkSDK
 
 struct ClockSignUpView: View {
-  @State private var email = ""
-  @State private var password = ""
-  @State private var code = ""
-  @State private var isVerifying = false
-  
   var body: some View {
     VStack {
-      Text("Sign Up")
-      if isVerifying {
-        TextField("Code", text: $code)
-        Button("Verify") {
-          Task { await verify(code: code) }
+      Text("Sign In with Spotify")
+        .font(.title)
+        .padding(.bottom, 20)
+      
+      Button(action: {
+        Task {
+          await signInWithSpotify()
         }
-      } else {
-        TextField("Email", text: $email)
-        SecureField("Password", text: $password)
-        Button("Continue") {
-          Task { await signUp(email: email, password: password) }
+      }) {
+        HStack {
+          Image(systemName: "music.note")
+          Text("Continue with Spotify")
         }
+        .font(.headline)
+        .padding()
+        .background(Color.green)
+        .foregroundColor(.white)
+        .cornerRadius(10)
       }
     }
     .padding()
@@ -36,34 +37,15 @@ struct ClockSignUpView: View {
 
 extension ClockSignUpView {
   
-  func signUp(email: String, password: String) async {
+  func signInWithSpotify() async {
     do {
-      let signUp = try await SignUp.create(
-        strategy: .standard(emailAddress: email, password: password)
-      )
-      
-        try await signUp.prepareVerification(strategy: .emailCode)
-
-      isVerifying = true
+      try await SignIn.create(strategy: .oauth(.spotify))
     } catch {
-      dump(error)
+        print("err \(error.localizedDescription)")
     }
   }
-  
-  func verify(code: String) async {
-    do {
-        guard let signUp = await Clerk.shared.client?.signUp else {
-        isVerifying = false
-        return
-      }
-      
-      try await signUp.attemptVerification(.emailCode(code: code))
-    } catch {
-      dump(error)
-    }
-  }
-  
 }
+
 
 #Preview {
     ClockSignUpView()
