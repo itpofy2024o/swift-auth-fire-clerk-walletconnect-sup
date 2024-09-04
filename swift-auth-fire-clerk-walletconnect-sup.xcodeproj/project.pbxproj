@@ -10,6 +10,9 @@
 		9E7D4EDC2C8772A2003BDE1F /* GoogleAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7D4EDB2C8772A2003BDE1F /* GoogleAuthView.swift */; };
 		9E7D4EDE2C8859F1003BDE1F /* ClerkAuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7D4EDD2C8859F0003BDE1F /* ClerkAuthViewModel.swift */; };
 		9E7D4EE02C88AB0D003BDE1F /* ClockContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7D4EDF2C88AB0D003BDE1F /* ClockContentView.swift */; };
+		9E7D4EE22C88AC5C003BDE1F /* ClockSignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7D4EE12C88AC5C003BDE1F /* ClockSignUpView.swift */; };
+		9E7D4EE42C88AD65003BDE1F /* ClockSignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7D4EE32C88AD65003BDE1F /* ClockSignInView.swift */; };
+		9E7D4EE62C88AE96003BDE1F /* ClockSignUporSignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7D4EE52C88AE96003BDE1F /* ClockSignUporSignInView.swift */; };
 		9E89A3682C822ED000D6FD19 /* ForgetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E89A3672C822ED000D6FD19 /* ForgetPasswordView.swift */; };
 		9E89A36A2C84B80700D6FD19 /* SplashUnitedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E89A3692C84B80600D6FD19 /* SplashUnitedView.swift */; };
 		9E89A36D2C85BD5300D6FD19 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 9E89A36C2C85BD5300D6FD19 /* GoogleSignIn */; };
@@ -72,6 +75,9 @@
 		9E7D4EDB2C8772A2003BDE1F /* GoogleAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAuthView.swift; sourceTree = "<group>"; };
 		9E7D4EDD2C8859F0003BDE1F /* ClerkAuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClerkAuthViewModel.swift; sourceTree = "<group>"; };
 		9E7D4EDF2C88AB0D003BDE1F /* ClockContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockContentView.swift; sourceTree = "<group>"; };
+		9E7D4EE12C88AC5C003BDE1F /* ClockSignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockSignUpView.swift; sourceTree = "<group>"; };
+		9E7D4EE32C88AD65003BDE1F /* ClockSignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockSignInView.swift; sourceTree = "<group>"; };
+		9E7D4EE52C88AE96003BDE1F /* ClockSignUporSignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockSignUporSignInView.swift; sourceTree = "<group>"; };
 		9E89A3672C822ED000D6FD19 /* ForgetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPasswordView.swift; sourceTree = "<group>"; };
 		9E89A3692C84B80600D6FD19 /* SplashUnitedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashUnitedView.swift; sourceTree = "<group>"; };
 		9E89A3702C85C6FD00D6FD19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -340,6 +346,9 @@
 				9E89A3672C822ED000D6FD19 /* ForgetPasswordView.swift */,
 				9E7D4EDB2C8772A2003BDE1F /* GoogleAuthView.swift */,
 				9E7D4EDD2C8859F0003BDE1F /* ClerkAuthViewModel.swift */,
+				9E7D4EE12C88AC5C003BDE1F /* ClockSignUpView.swift */,
+				9E7D4EE32C88AD65003BDE1F /* ClockSignInView.swift */,
+				9E7D4EE52C88AE96003BDE1F /* ClockSignUporSignInView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -515,11 +524,14 @@
 				9ED4ED982C7F6FBF0004C5CC /* ProfileView.swift in Sources */,
 				9E89A3722C85D1FE00D6FD19 /* SplashOnlyView.swift in Sources */,
 				9ED4ED9D2C7F71040004C5CC /* AppTabBarView.swift in Sources */,
+				9E7D4EE62C88AE96003BDE1F /* ClockSignUporSignInView.swift in Sources */,
 				9ED4EDB22C7F73FF0004C5CC /* UserSupbase.swift in Sources */,
 				9E7D4EDE2C8859F1003BDE1F /* ClerkAuthViewModel.swift in Sources */,
 				9ED4ED7B2C7F6D550004C5CC /* UserFirebase.swift in Sources */,
 				9ED4EDA42C7F71E90004C5CC /* SplashOverTextView.swift in Sources */,
+				9E7D4EE22C88AC5C003BDE1F /* ClockSignUpView.swift in Sources */,
 				9ED4EDA22C7F71A20004C5CC /* SplashNullUserView.swift in Sources */,
+				9E7D4EE42C88AD65003BDE1F /* ClockSignInView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

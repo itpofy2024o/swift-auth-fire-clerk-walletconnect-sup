@@ -22,15 +22,11 @@ struct ClockContentView: View {
                         }
                     }
             } else {
-//                switch viewModel.authStatus {
-//                case .loggedIn, .googled:
-//                        AppTabBarView()
-//                    case .loggedOut:
-//                        AuthView(method:"")
-//                            .environmentObject(viewModel)
-//                    case .unknown, .anonymous:
-//                            EmptyView()
-//                }
+                if clerk.user != nil {
+                    AppTabBarView()
+                } else {
+                    ClockSignUpOrSignInView()
+                }
             }
         }
         .onChange(of: scenePhase) {

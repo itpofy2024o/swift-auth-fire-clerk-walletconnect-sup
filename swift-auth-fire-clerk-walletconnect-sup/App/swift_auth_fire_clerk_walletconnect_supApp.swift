@@ -25,10 +25,11 @@ struct swift_auth_fire_clerk_walletconnect_supApp: App {
                 if clerk.loadingState == .notLoaded {
                   ProgressView()
                 } else {
-                    ContentView()
-                        .environmentObject(viewModel).onOpenURL { url in
-                            GIDSignIn.sharedInstance.handle(url)
-                        }
+//                    ContentView()
+//                        .environmentObject(viewModel).onOpenURL { url in
+//                            GIDSignIn.sharedInstance.handle(url)
+//                        }
+                    ClockContentView()
                 }
            }.task {
                 clerk.configure(publishableKey: "pk_test_cXVpY2stc2FsbW9uLTU3LmNsZXJrLmFjY291bnRzLmRldiQ")
