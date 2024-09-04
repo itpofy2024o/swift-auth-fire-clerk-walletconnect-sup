@@ -1,20 +1,17 @@
 //
-//  ContentView.swift
+//  ClockContentView.swift
 //  swift-auth-fire-clerk-walletconnect-sup
 //
-//  Created by Devor Vlad on 28/8/2024.
+//  Created by Devor Vlad on 4/9/2024.
 //
 
 import SwiftUI
-import FirebaseAuth
 import ClerkSDK
 
-struct ContentView: View {
-    @EnvironmentObject var viewModel: AuthFirebaseViewModel
+struct ClockContentView: View {
     @State private var showSplash = true
     @Environment(\.scenePhase) private var scenePhase
     @ObservedObject private var clerk = Clerk.shared
-    
     var body: some View {
         ZStack {
             if showSplash {
@@ -25,15 +22,15 @@ struct ContentView: View {
                         }
                     }
             } else {
-                switch viewModel.authStatus {
-                case .loggedIn, .googled:
-                        AppTabBarView()
-                    case .loggedOut:
-                        AuthView(method:"")
-                            .environmentObject(viewModel)
-                    case .unknown, .anonymous:
-                            EmptyView()
-                }
+//                switch viewModel.authStatus {
+//                case .loggedIn, .googled:
+//                        AppTabBarView()
+//                    case .loggedOut:
+//                        AuthView(method:"")
+//                            .environmentObject(viewModel)
+//                    case .unknown, .anonymous:
+//                            EmptyView()
+//                }
             }
         }
         .onChange(of: scenePhase) {
@@ -44,16 +41,9 @@ struct ContentView: View {
                 }
             }
         }
-        .onAppear() {
-            Task {
-                await viewModel.fetchUser()
-                viewModel.updateAuthStatus()
-            }
-        }
     }
 }
 
-
 #Preview {
-    ContentView().environmentObject(AuthFirebaseViewModel())
+    ClockContentView()
 }
