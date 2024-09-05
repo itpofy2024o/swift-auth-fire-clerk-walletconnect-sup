@@ -7,13 +7,11 @@
 
 import SwiftUI
 import FirebaseAuth
-import ClerkSDK
 
 struct ContentView: View {
     @EnvironmentObject var viewModel: AuthFirebaseViewModel
     @State private var showSplash = true
     @Environment(\.scenePhase) private var scenePhase
-    @ObservedObject private var clerk = Clerk.shared
     
     var body: some View {
         ZStack {

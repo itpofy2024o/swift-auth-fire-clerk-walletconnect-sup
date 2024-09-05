@@ -8,11 +8,9 @@
 import SwiftUI
 import GoogleSignIn
 import FirebaseCore
-import ClerkSDK
 
 @main
 struct swift_auth_fire_clerk_walletconnect_supApp: App {
-    @ObservedObject private var clerk = Clerk.shared
     @StateObject var viewModel = AuthFirebaseViewModel()
     
     init () {
@@ -21,20 +19,10 @@ struct swift_auth_fire_clerk_walletconnect_supApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ZStack {
-                if clerk.loadingState == .notLoaded {
-                  ProgressView()
-                } else {
-//                    ContentView()
-//                        .environmentObject(viewModel).onOpenURL { url in
-//                            GIDSignIn.sharedInstance.handle(url)
-//                        }
-                    ClockContentView()
+            ContentView()
+                .environmentObject(viewModel).onOpenURL { url in
+                    GIDSignIn.sharedInstance.handle(url)
                 }
-           }.task {
-                clerk.configure(publishableKey: "pk_test_cXVpY2stc2FsbW9uLTU3LmNsZXJrLmFjY291bnRzLmRldiQ")
-                try? await clerk.load()
-           }
         }
     }
 }
