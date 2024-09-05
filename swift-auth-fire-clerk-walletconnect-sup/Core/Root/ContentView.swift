@@ -24,12 +24,12 @@ struct ContentView: View {
                     }
             } else {
                 switch viewModel.authStatus {
-                case .loggedIn, .googled:
+                case .loggedIn:
                         AppTabBarView()
                     case .loggedOut:
                         AuthView(method:"")
                             .environmentObject(viewModel)
-                    case .unknown, .anonymous:
+                    case .unknown:
                             EmptyView()
                 }
             }

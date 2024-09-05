@@ -8,16 +8,10 @@
 import Foundation
 import FirebaseCore
 import FirebaseAuth
-import GoogleSignIn
-import AuthenticationServices
 import FirebaseFirestore
 
 protocol FirebaseAuthenticanFormProtocol {
     var isValid: Bool { get }
-}
-
-enum AuthenticationError: Error {
-    case runtimeError(String)
 }
 
 @MainActor
@@ -30,8 +24,6 @@ class AuthFirebaseViewModel: ObservableObject {
         case loggedIn
         case loggedOut
         case unknown
-        case anonymous
-        case googled
     }
     
     init () {
@@ -40,40 +32,6 @@ class AuthFirebaseViewModel: ObservableObject {
         Task {
             await fetchUser()
         }
-    }
-    
-    
-    func googleOauth() async throws {        
-        guard let clientID = FirebaseApp.app()?.options.clientID else {
-            fatalError("no firbase clientID found")
-        }
-
-        let config = GIDConfiguration(clientID: clientID)
-        GIDSignIn.sharedInstance.configuration = config
-        
-        let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene
-        guard let rootViewController = scene?.windows.first?.rootViewController
-        else {
-            fatalError("There is no root view controller!")
-        }
-        
-        let result = try await GIDSignIn.sharedInstance.signIn(
-            withPresenting: rootViewController
-        )
-        let user = result.user
-        guard let idToken = user.idToken?.tokenString else {
-            throw AuthenticationError.runtimeError("Unexpected error occurred, please retry")
-        }
-        let credential = GoogleAuthProvider.credential(
-            withIDToken: idToken, accessToken: user.accessToken.tokenString
-        )
-        try await Auth.auth().signIn(with: credential)
-        authStatus = .googled
-    }
-    
-    func logoutgg() async throws {
-        GIDSignIn.sharedInstance.signOut()
-        try Auth.auth().signOut()
     }
     
     func updateAuthStatus() {
@@ -124,17 +82,6 @@ class AuthFirebaseViewModel: ObservableObject {
             updateAuthStatus()
         } catch {
             print("DEBUG sign out: \(error.localizedDescription)")
-        }
-    }
-    
-    func signInAnonymously() async {
-        do {
-            let authResult = try await Auth.auth().signInAnonymously()
-            self.userSession = authResult.user
-            authStatus = .anonymous
-            await fetchUser()
-        } catch {
-            print("DEBUG: Anonymous sign-in error: \(error.localizedDescription)")
         }
     }
     

@@ -31,12 +31,7 @@ struct ProfileView: View {
                 Section("Account") {
                     Button {
                         Task {
-                            do {
-                                viewModel.authStatus == .googled
-                                ? try await viewModel.logoutgg() : viewModel.singOut()
-                            } catch {
-                                    print("")
-                                }
+                            viewModel.singOut()
                         }
                     } label : {
                         Text("Log Out").foregroundColor(.gray)

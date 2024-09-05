@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import GoogleSignIn
 import FirebaseCore
 
 @main
@@ -20,9 +19,7 @@ struct swift_auth_fire_clerk_walletconnect_supApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(viewModel).onOpenURL { url in
-                    GIDSignIn.sharedInstance.handle(url)
-                }
+                .environmentObject(viewModel)
         }
     }
 }
