@@ -64,15 +64,6 @@ struct AuthView: View {
                 }.padding(.top,12)
                     .padding(.bottom,12)
                 
-                NavigationLink {
-                    GoogleAuthView()
-                } label : {
-                    Text("Use Google to Log In")
-                        .font(.title3)
-                        .fontWeight(.medium)
-                        .foregroundColor(colorScheme == .dark ? Color(.blue):Color(.blue))
-                }
-                
                 Spacer()
                 
                 NavigationLink {

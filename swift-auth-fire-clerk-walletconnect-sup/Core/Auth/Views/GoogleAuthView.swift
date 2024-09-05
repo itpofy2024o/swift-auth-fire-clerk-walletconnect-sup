@@ -14,11 +14,6 @@ struct GoogleAuthView: View {
         Text("Google SSO Login")
         Button{
             Task {
-                do {
-                    try await viewModel.googleOauth()
-                } catch AuthenticationError.runtimeError(let errorMessage) {
-                    err = errorMessage
-                }
             }
         }label: {
             HStack {
