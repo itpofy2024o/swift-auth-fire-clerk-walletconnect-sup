@@ -27,13 +27,13 @@ struct RegisterView: View {
                 .padding(.vertical,26)
             
             VStack(spacing: 15) {
-                AuthenticationInputView(text:$username,label: "Username",placeholder: "elonthemuskpredicted")
+                AuthenticationInputView(text:$username,label: "Username",placeholder: "4 < count < 24")
                     .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
                 AuthenticationInputView(text:$newEmail,label: "Email Address",placeholder: "example@gmail.com")
                     .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
                 AuthenticationInputView(text:$firstName,label: "First Name",placeholder: "Alexander")
                 AuthenticationInputView(text:$lastName,label: "Last Name",placeholder: "Bularia")
-                AuthenticationInputView(text:$password,label: "Password",placeholder: "thisispassword_youknowit",isSecureInfo: true)
+                AuthenticationInputView(text:$password,label: "Password",placeholder: "Upper * 1 + Lower * 1 + Digit * 1 + count > 7",isSecureInfo: true)
                 ZStack(alignment:.trailing) {
                     AuthenticationInputView(text:$confirmation,label: "Confirm Password",placeholder: "xxxxxxxxxxxxxxxxxxxxxxxx",isSecureInfo: true)
                     if !password.isEmpty && !confirmation.isEmpty {
