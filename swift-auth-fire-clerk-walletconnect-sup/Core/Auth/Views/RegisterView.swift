@@ -54,8 +54,8 @@ struct RegisterView: View {
                 VStack(alignment: .leading,spacing: 2) {
                     Text("Username > 4 and < 24")
                         .fontWeight(.thin).font(.subheadline)
-                    Text("Password requires 1 digit, 1 upper case, and 1 lower case")
-                        .fontWeight(.thin).font(.subheadline).lineLimit(2)
+                    Text("Password: 1 digit, 1 upper case, and 1 lower case")
+                        .fontWeight(.thin).font(.subheadline)
                     Text("with at least 7 characters")
                         .fontWeight(.thin).font(.subheadline)
                 }
