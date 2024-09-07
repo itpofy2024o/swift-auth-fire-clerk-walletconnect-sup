@@ -12,15 +12,6 @@ struct UserFirebase: Identifiable, Codable {
     let fullname: String
     let username: String
     let email: String
-    
-    var initials: String {
-        let formatter = PersonNameComponentsFormatter()
-        if let components = formatter.personNameComponents(from: fullname) {
-            formatter.style = .abbreviated
-            return formatter.string(from: components)
-        }
-        return ""
-    }
 }
 
 extension UserFirebase {

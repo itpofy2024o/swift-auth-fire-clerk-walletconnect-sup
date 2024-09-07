@@ -24,18 +24,18 @@ struct RegisterView: View {
                 .resizable()
                 .scaledToFit()
                 .cornerRadius(20)
-                .padding(.vertical,26)
+                .padding(.vertical,6)
             
             VStack(spacing: 15) {
-                AuthenticationInputView(text:$username,label: "Username",placeholder: "4 < count < 24")
+                AuthenticationInputView(text:$username,label: "Username",placeholder: "Alexis999")
                     .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
                 AuthenticationInputView(text:$newEmail,label: "Email Address",placeholder: "example@gmail.com")
                     .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
                 AuthenticationInputView(text:$firstName,label: "First Name",placeholder: "Alexander")
                 AuthenticationInputView(text:$lastName,label: "Last Name",placeholder: "Bularia")
-                AuthenticationInputView(text:$password,label: "Password",placeholder: "Upper * 1 + Lower * 1 + Digit * 1 + count > 7",isSecureInfo: true)
+                AuthenticationInputView(text:$password,label: "Password",placeholder: "youhaveagoodfamily!",isSecureInfo: true)
                 ZStack(alignment:.trailing) {
-                    AuthenticationInputView(text:$confirmation,label: "Confirm Password",placeholder: "xxxxxxxxxxxxxxxxxxxxxxxx",isSecureInfo: true)
+                    AuthenticationInputView(text:$confirmation,label: "Confirm Password",placeholder: "xxxxxxxxxxx",isSecureInfo: true)
                     if !password.isEmpty && !confirmation.isEmpty {
                         if password == confirmation {
                             Image(systemName: "checkmark.circle.fill")
@@ -50,6 +50,14 @@ struct RegisterView: View {
                                     .foregroundColor(Color(.systemRed)).padding(.top,25)
                         }
                     }
+                }
+                VStack(alignment: .leading,spacing: 2) {
+                    Text("Username > 4 and < 24")
+                        .fontWeight(.thin).font(.subheadline)
+                    Text("Password requires 1 digit, 1 upper case, and 1 lower case")
+                        .fontWeight(.thin).font(.subheadline).lineLimit(2)
+                    Text("with at least 7 characters")
+                        .fontWeight(.thin).font(.subheadline)
                 }
             }
             .padding(.horizontal,28)
