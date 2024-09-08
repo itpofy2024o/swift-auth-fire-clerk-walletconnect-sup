@@ -6,35 +6,19 @@
 //
 
 import Foundation
+import Supabase
 
-class SupabaseViewModel: ObservableObject {
-    init () {
-        
-    }
+let supabase = SupabaseClient(
+  supabaseURL: URL(string: "https://vfxesnyaimaclafmhtvq.supabase.co")!,
+  supabaseKey: ""
+)
+
+struct SupaUser: Decodable, Identifiable {
+    let id: Int
+    let name: String
+    let email: String
+}
+
+class SupabaseViewModel {
     
-    func signIn(withEmail email:String, password: String) async throws {
-        print("log in")
-    }
-    
-    func createNewUser(
-        withEmail email: String,
-        password: String,
-        username: String,
-        firstname: String,
-        lastname: String
-    ) async throws {
-        print("create new")
-    }
-    
-    func singOut() {
-        
-    }
-    
-    func deleteYourAccount() {
-        
-    }
-    
-    func fetchUser() async {
-        
-    }
 }
