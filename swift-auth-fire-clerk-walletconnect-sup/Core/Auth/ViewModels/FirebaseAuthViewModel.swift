@@ -64,13 +64,43 @@ class AuthFirebaseViewModel: ObservableObject {
             let result = try await Auth.auth().createUser(withEmail: email, password: password)
             self.userSession = result.user
             let fullname = "\(firstname) \(lastname)"
-            let user = UserFirebase(id:result.user.uid,fullname:fullname,username:username,email:email)
-            let encodedUser = try Firestore.Encoder().encode(user)
-            try await Firestore.firestore().collection("users").document(user.id).setData(encodedUser)
-            updateAuthStatus()
-            await fetchUser()
+            let newUser = UserFirebase(id:result.user.uid,fullname:fullname,username:username,email:email)
+            let encodedUser = try Firestore.Encoder().encode(newUser)
+            
+            if let user = Auth.auth().currentUser {
+                try await user.sendEmailVerification()
+                print("Verification email sent to \(email)")
+                var isVerified = false
+                while !isVerified {
+                    try await Task.sleep(nanoseconds: 4_000_000_000)
+                    try await user.reload() // Reload the user's data
+                    isVerified = user.isEmailVerified
+                }
+                if user.isEmailVerified {
+                    try await Firestore.firestore().collection("users").document(newUser.id).setData(encodedUser)
+                    print("Email \(email) and \(fullname) are verified.")
+                    updateAuthStatus()
+                    await fetchUser()
+                } else {
+                    print("Email is not verified. Prompt user to verify.")
+                }
+            }
         } catch {
             print("firebase create new user: \(error.localizedDescription)")
+        }
+    }
+    
+    func resendEmailVerification() async throws {
+        guard let currentUser = Auth.auth().currentUser else {
+            print("No user is currently signed in.")
+            return
+        }
+        
+        do {
+            try await currentUser.sendEmailVerification()
+            print("Verification email resent to \(currentUser.email ?? "unknown email").")
+        } catch {
+            print("Failed to resend verification email: \(error.localizedDescription)")
         }
     }
     
