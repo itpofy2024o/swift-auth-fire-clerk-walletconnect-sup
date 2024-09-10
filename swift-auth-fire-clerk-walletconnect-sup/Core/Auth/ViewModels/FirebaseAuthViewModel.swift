@@ -66,18 +66,18 @@ class AuthFirebaseViewModel: ObservableObject {
             let fullname = "\(firstname) \(lastname)"
             let newUser = UserFirebase(id:result.user.uid,fullname:fullname,username:username,email:email)
             let encodedUser = try Firestore.Encoder().encode(newUser)
+            try await Firestore.firestore().collection("users").document(newUser.id).setData(encodedUser)
             
             if let user = Auth.auth().currentUser {
                 try await user.sendEmailVerification()
                 print("Verification email sent to \(email)")
                 var isVerified = false
                 while !isVerified {
-                    try await Task.sleep(nanoseconds: 4_000_000_000)
+                    try await Task.sleep(nanoseconds: 1_000_000_000)
                     try await user.reload() // Reload the user's data
                     isVerified = user.isEmailVerified
                 }
                 if user.isEmailVerified {
-                    try await Firestore.firestore().collection("users").document(newUser.id).setData(encodedUser)
                     print("Email \(email) and \(fullname) are verified.")
                     updateAuthStatus()
                     await fetchUser()
