@@ -25,19 +25,12 @@ struct RegisterView: View {
     func startTimer() {
         resentTimer?.invalidate()
         resentTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
-                if remainingTime > 0 {
-                    remainingTime -= 1
-                }
+            if remainingTime > 0 {
+                remainingTime -= 1
+            } else {
+                isSent=false
+                resentTimer?.invalidate()
             }
-        }
-    
-    func handleButtonClick() {
-        isSent = true
-        
-        resentTimer?.invalidate()
-        
-        resentTimer = Timer.scheduledTimer(withTimeInterval: 60.0, repeats: false) { _ in
-            isSent = false
         }
     }
     
@@ -84,40 +77,55 @@ struct RegisterView: View {
             
             if isSigned {
                 Button {
-                    remainingTime=60
-                    startTimer()
-                    if remainingTime == 0 {
-                        isSent=false
-                        Task {
-                            try await viewModel.resendEmailVerification()
+                    if remainingTime == 0 && !isSent {
+                            Task {
+                                do {
+                                    try await viewModel.resendEmailVerification()
+                                    isSent = true
+                                    remainingTime = 60
+                                    startTimer()
+                                } catch {
+                                    print("\(error.localizedDescription)")
+                                }
+                            }
+                            print("Email Verification Resent to \(newEmail)")
                         }
-                    }
-                    print("Email Verification")
                 } label: {
                     HStack {
-                        Text("Resend in \(remainingTime)s").fontWeight(.semibold)
-                        Image(systemName: "arrow.right")
-                    }.foregroundColor(.white)
+                            Text(isSent ? "Resend in \(remainingTime)s" : "Resend Verification")
+                                .fontWeight(.semibold)
+                    }
+                    .foregroundColor(.black)
                         .frame(width: UIScreen.main.bounds.width-85,height: 44)
                         .padding(5)
                 }
-                .background(.orange)
+                .background(.gray)
                 .opacity(isSent ? 0.42 : 1.0)
                 .cornerRadius(17)
                 .padding(.top,20)
             } else {
                 Button {
                     Task {
-                        try await viewModel.createNewUser(
-                            withEmail:newEmail,password:password,
-                            username:username,firstname:firstName,lastname:lastName)
-                        isSigned=true
-                        isSent=true
+                        do {
+                            isSigned = true
+                            isSent = true
+                            remainingTime = 60
+                            startTimer()
+                            try await viewModel.createNewUser(
+                                withEmail: newEmail,
+                                password: password,
+                                username: username,
+                                firstname: firstName,
+                                lastname: lastName
+                            )
+                            
+                            print("signed \(isSigned)")
+                            print("sent \(isSent)")
+                        } catch {
+                            print("Registration failed: \(error.localizedDescription)")
+                        }
+                        print("Registration: \(newEmail)")
                     }
-                    if isSigned {
-                        startTimer()
-                    }
-                    print("Registration \(newEmail)")
                 } label: {
                     HStack {
                         Text("SIGN UP").fontWeight(.semibold)
@@ -155,7 +163,7 @@ extension RegisterView: FirebaseAuthenticanFormProtocol {
         && password.rangeOfCharacter(from: CharacterSet.lowercaseLetters) != nil
         && password.rangeOfCharacter(from: CharacterSet.decimalDigits) != nil
         && !firstName.isEmpty && !lastName.isEmpty &&
-        firstName.count > 2 && lastName.count > 2 && confirmation == password && !username.isEmpty && username.count > 3 && username.count < 14
+        firstName.count > 2 && lastName.count > 2 && confirmation == password && !username.isEmpty && username.count > 3
     }
 }
 
