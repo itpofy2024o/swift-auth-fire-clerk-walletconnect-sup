@@ -17,6 +17,29 @@ struct RegisterView: View {
     @State private var confirmation = ""
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var viewModel: AuthFirebaseViewModel
+    @State private var isSent = false
+    @State private var resentTimer: Timer?
+    @State private var isSigned = false
+    @State private var remainingTime = 60
+    
+    func startTimer() {
+        resentTimer?.invalidate()
+        resentTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
+                if remainingTime > 0 {
+                    remainingTime -= 1
+                }
+            }
+        }
+    
+    func handleButtonClick() {
+        isSent = true
+        
+        resentTimer?.invalidate()
+        
+        resentTimer = Timer.scheduledTimer(withTimeInterval: 60.0, repeats: false) { _ in
+            isSent = false
+        }
+    }
     
     var body: some View {
         VStack {
@@ -52,37 +75,63 @@ struct RegisterView: View {
                     }
                 }
                 VStack(alignment: .leading,spacing: 2) {
-                    Text("Username > 4 and < 24")
-                        .fontWeight(.thin).font(.subheadline)
-                    Text("Password: 1 digit, 1 upper case, and 1 lower case")
-                        .fontWeight(.thin).font(.subheadline)
-                    Text("with at least 7 characters")
+                    Text("Password: digit, upper case, and lower case * 1")
                         .fontWeight(.thin).font(.subheadline)
                 }
             }
             .padding(.horizontal,28)
             .padding(.top,UIScreen.main.bounds.width*0.05)
             
-            Button {
-                Task {
-                    try await viewModel.createNewUser(
-                        withEmail:newEmail,password:password,
-                        username:username,firstname:firstName,lastname:lastName)
+            if isSigned {
+                Button {
+                    remainingTime=60
+                    startTimer()
+                    if remainingTime == 0 {
+                        isSent=false
+                        Task {
+                            try await viewModel.resendEmailVerification()
+                        }
+                    }
+                    print("Email Verification")
+                } label: {
+                    HStack {
+                        Text("Resend in \(remainingTime)s").fontWeight(.semibold)
+                        Image(systemName: "arrow.right")
+                    }.foregroundColor(.white)
+                        .frame(width: UIScreen.main.bounds.width-85,height: 44)
+                        .padding(5)
                 }
-                print("Registration ing")
-            } label: {
-                HStack {
-                    Text("SIGN UP").fontWeight(.semibold)
-                    Image(systemName: "arrow.up")
-                }.foregroundColor(.white)
-                    .frame(width: UIScreen.main.bounds.width-85,height: 44)
-                    .padding(5)
+                .background(.orange)
+                .opacity(isSent ? 0.42 : 1.0)
+                .cornerRadius(17)
+                .padding(.top,20)
+            } else {
+                Button {
+                    Task {
+                        try await viewModel.createNewUser(
+                            withEmail:newEmail,password:password,
+                            username:username,firstname:firstName,lastname:lastName)
+                        isSigned=true
+                        isSent=true
+                    }
+                    if isSigned {
+                        startTimer()
+                    }
+                    print("Registration \(newEmail)")
+                } label: {
+                    HStack {
+                        Text("SIGN UP").fontWeight(.semibold)
+                        Image(systemName: "arrow.up")
+                    }.foregroundColor(.white)
+                        .frame(width: UIScreen.main.bounds.width-85,height: 44)
+                        .padding(5)
+                }
+                .background(.brown)
+                .disabled(!isValid)
+                .opacity(isValid ? 1.0 : 0.42)
+                .cornerRadius(17)
+                .padding(.top,20)
             }
-            .background(.brown)
-            .disabled(!isValid)
-            .opacity(isValid ? 1.0 : 0.42)
-            .cornerRadius(17)
-            .padding(.top,20)
             
             Spacer()
             
@@ -106,7 +155,7 @@ extension RegisterView: FirebaseAuthenticanFormProtocol {
         && password.rangeOfCharacter(from: CharacterSet.lowercaseLetters) != nil
         && password.rangeOfCharacter(from: CharacterSet.decimalDigits) != nil
         && !firstName.isEmpty && !lastName.isEmpty &&
-        firstName.count > 2 && lastName.count > 2 && confirmation == password && !username.isEmpty && username.count > 4 && username.count < 14
+        firstName.count > 2 && lastName.count > 2 && confirmation == password && !username.isEmpty && username.count > 3 && username.count < 14
     }
 }
 
