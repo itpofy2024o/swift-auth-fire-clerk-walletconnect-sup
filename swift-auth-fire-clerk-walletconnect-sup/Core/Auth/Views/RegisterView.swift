@@ -43,7 +43,7 @@ struct RegisterView: View {
                 .padding(.vertical,6)
             
             VStack(spacing: 15) {
-                AuthenticationInputView(text:$username,label: "Username",placeholder: "Alexis999")
+                AuthenticationInputView(text:$username,label: "Username",placeholder: "Alexis999/at least 3 character")
                     .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
                 AuthenticationInputView(text:$newEmail,label: "Email Address",placeholder: "example@gmail.com")
                     .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
