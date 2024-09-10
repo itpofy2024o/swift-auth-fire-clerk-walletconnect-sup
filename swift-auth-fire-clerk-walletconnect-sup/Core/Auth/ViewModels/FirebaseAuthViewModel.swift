@@ -60,6 +60,13 @@ class AuthFirebaseViewModel: ObservableObject {
         firstname: String,
         lastname: String
     ) async throws {
+        let isUsernameTaken = try await Firestore.firestore()
+            .collection("users")
+            .whereField("username", isEqualTo: username)
+            .getDocuments().isEmpty
+        if !isUsernameTaken {
+            throw NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: "Username is already taken. Please choose another one."])
+        }
         do {
             let result = try await Auth.auth().createUser(withEmail: email, password: password)
             self.userSession = result.user
